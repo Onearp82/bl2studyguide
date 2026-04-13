@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Business Law II — Unified Study Guide</title>
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#f9f7f4;color:#1a1a1a;line-height:1.6}
+    .header{background:#fff;border-bottom:1px solid #e5e5e5;padding:16px 24px;position:sticky;top:0;z-index:100}
+    .header h1{font-size:20px;font-weight:600;color:#1a1a1a}
+    .header p{font-size:13px;color:#666;margin-top:2px}
+    .nav{display:flex;gap:6px;padding:16px 24px 0;flex-wrap:wrap}
+    .nav-btn{padding:8px 16px;font-size:13px;font-weight:500;border:1px solid #ddd;border-radius:8px;background:#fff;color:#444;cursor:pointer;transition:all .15s}
+    .nav-btn:hover{background:#f0eeff;border-color:#9b8ff0}
+    .nav-btn.active{background:#6c5ce7;color:#fff;border-color:#6c5ce7}
+    .section{display:none;padding:20px 24px}
+    .section.show{display:block}
+    .card{background:#fff;border:1px solid #e5e5e5;border-radius:12px;padding:20px;margin-bottom:14px}
+    .card-title{font-size:16px;font-weight:600;color:#1a1a1a;margin-bottom:8px}
+    .badge{display:inline-block;font-size:11px;font-weight:600;padding:3px 10px;border-radius:20px;margin-bottom:10px;text-transform:uppercase;letter-spacing:.04em}
+    .b-blue{background:#dbeafe;color:#1e40af}
+    .b-green{background:#d1fae5;color:#065f46}
+    .b-amber{background:#fef3c7;color:#92400e}
+    .b-red{background:#fee2e2;color:#991b1b}
+    .b-purple{background:#ede9fe;color:#5b21b6}
+    .rule{background:#f5f3ff;border-left:3px solid #6c5ce7;padding:10px 14px;border-radius:0 8px 8px 0;margin:10px 0;font-size:14px}
+    .rule.green{background:#f0fdf4;border-left-color:#22c55e}
+    .rule.amber{background:#fffbeb;border-left-color:#f59e0b}
+    .rule.red{background:#fef2f2;border-left-color:#ef4444}
+    .exam{font-size:12px;color:#92400e;background:#fef3c7;border-radius:8px;padding:8px 12px;margin-top:10px}
+    .grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px}
+    .metric{background:#fff;border:1px solid #e5e5e5;border-radius:10px;padding:14px;text-align:center}
+    .metric-n{font-size:32px;font-weight:700;color:#6c5ce7}
+    .metric-l{font-size:12px;color:#666;margin-top:4px}
+    details summary{cursor:pointer;font-weight:600;font-size:14px;padding:6px 0;list-style:none;display:flex;justify-content:space-between;align-items:center}
+    details summary::-webkit-details-marker{display:none}
+    details summary::after{content:"▸";color:#999;transition:transform .2s}
+    details[open] summary::after{transform:rotate(90deg)}
+    .detail-body{margin-top:10px;font-size:14px;line-height:1.75;color:#333}
+    .divider{height:1px;background:#f0f0f0;margin:10px 0}
+    .fc-wrap{background:#fff;border:1px solid #e5e5e5;border-radius:12px;min-height:220px;cursor:pointer;display:flex;align-items:center;justify-content:center;text-align:center;padding:24px;margin-bottom:12px;transition:box-shadow .2s;position:relative}
+    .fc-wrap:hover{box-shadow:0 2px 12px rgba(0,0,0,.08)}
+    .fc-label{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:#999;margin-bottom:12px}
+    .fc-q{font-size:17px;font-weight:600;color:#1a1a1a;line-height:1.5}
+    .fc-a{font-size:14px;color:#333;line-height:1.7}
+    .fc-hint{font-size:12px;color:#aaa;position:absolute;bottom:12px;right:16px}
+    .fc-nav{display:flex;align-items:center;justify-content:center;gap:16px;margin-bottom:20px}
+    .fc-nav button{padding:8px 20px;border:1px solid #ddd;border-radius:8px;background:#fff;cursor:pointer;font-size:13px;font-weight:500}
+    .fc-nav button:hover{background:#f5f5f5}
+    .fc-counter{font-size:14px;color:#666;font-weight:500}
+    .chip-row{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}
+    .chip{font-size:12px;padding:5px 12px;border:1px solid #ddd;border-radius:20px;background:#fff;color:#555;cursor:pointer;font-weight:500}
+    .chip:hover{border-color:#9b8ff0;color:#6c5ce7}
+    .chip.active{background:#6c5ce7;color:#fff;border-color:#6c5ce7}
+    .qz-q{font-size:16px;font-weight:600;color:#1a1a1a;margin-bottom:16px;line-height:1.5}
+    .qz-opt{display:block;width:100%;text-align:left;padding:13px 16px;border:1px solid #e5e5e5;border-radius:8px;background:#fff;color:#1a1a1a;cursor:pointer;margin-bottom:8px;font-size:14px;transition:all .15s}
+    .qz-opt:hover:not([disabled]){border-color:#9b8ff0;background:#f5f3ff}
+    .qz-opt.correct{border-color:#22c55e;background:#f0fdf4;color:#065f46}
+    .qz-opt.wrong{border-color:#ef4444;background:#fef2f2;color:#991b1b}
+    .qz-fb{margin:12px 0;font-size:14px;color:#333;padding:14px;background:#f9f9f9;border-radius:8px;line-height:1.6;border-left:3px solid #6c5ce7;display:none}
+    .qz-next{padding:10px 24px;border:1px solid #ddd;border-radius:8px;background:#fff;cursor:pointer;font-size:14px;font-weight:500;display:none;margin-top:4px}
+    .qz-next:hover{background:#f5f5f5}
+    .progress-bar{height:5px;background:#f0f0f0;border-radius:5px;margin-bottom:14px}
+    .progress-fill{height:100%;background:#6c5ce7;border-radius:5px;transition:width .3s}
+    .score-box{text-align:center;padding:40px 20px}
+    .score-big{font-size:52px;font-weight:700;color:#6c5ce7}
+    .score-sub{font-size:14px;color:#666;margin-top:6px}
+    .score-grade{font-size:15px;color:#333;margin-top:16px;font-weight:500}
+    .restart{padding:12px 28px;border:1px solid #ddd;border-radius:8px;background:#fff;cursor:pointer;font-size:14px;font-weight:500;margin-top:20px;margin-right:8px}
+    .restart:hover{background:#f5f5f5}
+    .restart.primary{background:#6c5ce7;color:#fff;border-color:#6c5ce7}
+    .restart.primary:hover{background:#5a4fd4}
+    @media(max-width:500px){.grid2{grid-template-columns:1fr}.nav-btn{font-size:12px;padding:7px 12px}}
+  </style>
+</head>
+<body>
+<div class="header">
+  <h1>Business Law II — Unified Study Guide</h1>
+  <p>Weeks 10–12 · Duty of Care, Loyalty, Good Faith, Caremark, Mergers, plus class emphasis</p>
+</div>
+<div class="nav">
+  <button class="nav-btn active" onclick="showTab('overview',this)">Overview</button>
+  <button class="nav-btn" onclick="showTab('weeks',this)">Weeks</button>
+  <button class="nav-btn" onclick="showTab('cases',this)">Key Cases</button>
+  <button class="nav-btn" onclick="showTab('flashcards',this)">Flashcards</button>
+  <button class="nav-btn" onclick="showTab('quiz',this)">Quiz</button>
+</div>
+
+<div id="overview" class="section show">
+  <div class="grid2">
+    <div class="metric"><div class="metric-n">3</div><div class="metric-l">weeks covered</div></div>
+    <div class="metric"><div class="metric-n">9</div><div class="metric-l">major doctrines / cases</div></div>
+    <div class="metric"><div class="metric-n">24</div><div class="metric-l">flashcards</div></div>
+    <div class="metric"><div class="metric-n">12</div><div class="metric-l">quiz questions</div></div>
+  </div>
+  <div class="card">
+    <span class="badge b-purple">Big Picture</span>
+    <div class="card-title">What these weeks are really about</div>
+    <p style="font-size:14px;line-height:1.75">These weeks build a complete fiduciary-duty framework. Week 10 establishes the protective shell around directors through the Business Judgment Rule and exculpation. Week 11 shows when that protection cracks because the board was uninformed or conflicted. Week 12 pushes into good faith, oversight, and mergers, where the board’s role becomes both more demanding and more exposed. Across all of it, the course keeps returning to the same practical questions: was the board informed, was it loyal, did it actually monitor, and who bears the risk when process breaks down?</p>
+  </div>
+  <div class="card">
+    <span class="badge b-blue">Week-by-Week Flow</span>
+    <div class="card-title">The sequence your professor is building</div>
+    <div style="display:flex;align-items:center;justify-content:center;gap:10px;padding:16px 0;flex-wrap:wrap">
+      <div style="text-align:center;padding:12px 18px;background:#dbeafe;border-radius:10px"><div style="font-weight:700;color:#1e40af">Week 10</div><div style="font-size:12px;color:#2563eb;margin-top:2px">BJR + care</div></div>
+      <div style="height:2px;width:40px;background:#ddd"></div>
+      <div style="text-align:center;padding:12px 18px;background:#fef3c7;border-radius:10px"><div style="font-weight:700;color:#92400e">Week 11</div><div style="font-size:12px;color:#b45309;margin-top:2px">Van Gorkom + loyalty</div></div>
+      <div style="height:2px;width:40px;background:#ddd"></div>
+      <div style="text-align:center;padding:12px 18px;background:#d1fae5;border-radius:10px"><div style="font-weight:700;color:#065f46">Week 12</div><div style="font-size:12px;color:#059669;margin-top:2px">Good faith + oversight + mergers</div></div>
+    </div>
+    <p style="font-size:13px;color:#666">That sequence matters. It moves from protection, to process failure, to oversight and transaction structure. It is basically teaching when directors are safe and when they are in the blast radius.</p>
+  </div>
+  <div class="card">
+    <span class="badge b-amber">Class Emphasis</span>
+    <div class="card-title">What your professor keeps signaling</div>
+    <div style="font-size:14px;line-height:1.9">
+      <div style="padding:6px 0;border-bottom:1px solid #f0f0f0">① <strong>Process matters more than outcome</strong>, courts generally do not punish directors just because a result went badly.</div>
+      <div style="padding:6px 0;border-bottom:1px solid #f0f0f0">② <strong>Loyalty problems are worse than care problems</strong>, because conflict and bad faith are more dangerous than mere sloppiness.</div>
+      <div style="padding:6px 0;border-bottom:1px solid #f0f0f0">③ <strong>Oversight claims are brutal to win</strong>, but a board cannot disappear into the wallpaper and pretend monitoring is optional.</div>
+      <div style="padding:6px 0;border-bottom:1px solid #f0f0f0">④ <strong>Mergers are where doctrine gets expensive</strong>, because care, disclosure, loyalty, and approval mechanics collide.</div>
+      <div style="padding:6px 0">⑤ <strong>Risk allocation is everywhere</strong>, whether the topic is a boardroom decision or a contract draft.</div>
+    </div>
+  </div>
+  <div class="card">
+    <span class="badge b-red">Exam Priorities</span>
+    <div class="card-title">What is most testable</div>
+    <div style="font-size:14px;line-height:1.9">
+      <div style="padding:6px 0;border-bottom:1px solid #f0f0f0">① <strong>BJR as a presumption</strong>, and who carries the burden to rebut it.</div>
+      <div style="padding:6px 0;border-bottom:1px solid #f0f0f0">② <strong>Van Gorkom as the classic uninformed-board case</strong>, where bad process drives liability.</div>
+      <div style="padding:6px 0;border-bottom:1px solid #f0f0f0">③ <strong>Duty of loyalty versus duty of care</strong>, especially conflict, self-dealing, and bad faith distinctions.</div>
+      <div style="padding:6px 0;border-bottom:1px solid #f0f0f0">④ <strong>Good faith inside loyalty</strong>, not as some random free-floating extra duty.</div>
+      <div style="padding:6px 0;border-bottom:1px solid #f0f0f0">⑤ <strong>Caremark’s two-prong oversight framework</strong>, plus why the claim is so hard to plead.</div>
+      <div style="padding:6px 0">⑥ <strong>Statutory merger mechanics</strong>, especially board approval, shareholder approval, and filings.</div>
+    </div>
+  </div>
+</div>
+
+<div id="weeks" class="section">
+  <div class="card"><span class="badge b-blue">Week 10</span><div class="card-title">Duty of Care, BJR, and 102(b)(7)</div><details><summary>Business Judgment Rule</summary><div class="detail-body">The BJR is a presumption that directors acted on an informed basis, in good faith, and in the honest belief that the action taken was in the company’s best interests. That means courts start by protecting directors, not by attacking them.<div class="rule">Exam shortcut: directors get the shield first, plaintiffs have to break it.</div><div class="exam">If the question asks who has the burden early, the challenger usually does.</div></div></details><div class="divider"></div><details><summary>How BJR gets rebutted</summary><div class="detail-body">The classic ways to rebut the presumption are conflict of interest, illegality, fraud, bad faith, and gross negligence. A merely disappointing result is not enough.<div class="rule red">A bad result is not the same thing as a bad process.</div></div></details><div class="divider"></div><details><summary>102(b)(7) and exculpation</summary><div class="detail-body">A charter provision under Delaware law can eliminate or limit personal liability for money damages for duty of care violations. It does not eliminate exposure for loyalty breaches, bad faith, intentional misconduct, or knowing violations of law.<div class="rule amber">Care-only plus money damages can be a dead lawsuit fast.</div></div></details><div class="divider"></div><details><summary>Why this week matters</summary><div class="detail-body">This week sets the baseline. Directors are not insurers. Corporate law is built to encourage decision-making, not to punish every swing and miss.<div class="rule green">The law wants effort, information, and honesty, not hindsight perfection.</div></div></details></div>
+
+  <div class="card"><span class="badge b-amber">Week 11</span><div class="card-title">Smith v. Van Gorkom, Shlensky, and Duty of Loyalty</div><details><summary>Smith v. Van Gorkom</summary><div class="detail-body">Van Gorkom is the classic case where directors lose because the board approved a major merger decision too quickly and without being adequately informed. The board did not really do the homework needed for a decision of that size.<div class="rule amber">A deal can look attractive and still be legally defective if the board process was careless.</div><div class="exam">Use the phrase gross negligence and uninformed decision-making.</div></div></details><div class="divider"></div><details><summary>Shlensky as the contrast case</summary><div class="detail-body">Shlensky shows the opposite instinct. The board decided not to install lights at Wrigley Field and the court refused to second-guess the decision because it was a board judgment without obvious conflict or disqualifying process failure.<div class="rule">Shlensky is deference. Van Gorkom is process collapse.</div></div></details><div class="divider"></div><details><summary>Duty of loyalty</summary><div class="detail-body">Duty of loyalty focuses on whether directors are acting for the corporation or for themselves. Self-dealing, conflict, and bad faith move the analysis into much harsher territory than ordinary care cases.<div class="rule red">Care is about process. Loyalty is about motive, conflict, and whose interests are being served.</div></div></details><div class="divider"></div><details><summary>Why this week matters</summary><div class="detail-body">This is where you learn that the shield from Week 10 is not absolute. If directors are uninformed or conflicted, courts start looking much harder and the risk rises fast.<div class="rule green">This is the week where the shield starts to crack.</div></div></details></div>
+
+  <div class="card"><span class="badge b-green">Week 12</span><div class="card-title">Good Faith, Caremark Oversight, and Statutory Mergers</div><details><summary>Duty of good faith</summary><div class="detail-body">Good faith is generally treated as part of the duty of loyalty framework. It is violated when directors consciously disregard responsibilities or knowingly tolerate serious legal problems.<div class="rule">Negligence is sloppy. Conscious disregard is dangerous.</div></div></details><div class="divider"></div><details><summary>Caremark oversight liability</summary><div class="detail-body">Caremark and later Stone v. Ritter frame oversight liability through two major paths: directors utterly fail to implement any reporting or information system, or directors implement one and then consciously fail to monitor it. These claims are famously difficult to win.<div class="rule red">Caremark is one of the hardest theories in corporation law for a plaintiff to win on.</div><div class="exam">If the board tried to monitor and built systems, the plaintiff is usually climbing uphill in boots filled with concrete.</div></div></details><div class="divider"></div><details><summary>Mission-critical oversight</summary><div class="detail-body">Modern cases sharpen the doctrine by asking whether the ignored issue was mission critical to the company’s business. If a board ignores its most essential risk area, the plaintiff has a much stronger shot at surviving dismissal.<div class="rule amber">If the company lives or dies on one category of risk, the board better be watching it.</div></div></details><div class="divider"></div><details><summary>Statutory mergers</summary><div class="detail-body">A statutory merger normally requires board approval, shareholder approval, and filing with the state. These transactions bring together fiduciary duty, disclosure, process, and approval mechanics in one setting.<div class="rule green">Mergers are where doctrine stops being abstract and starts costing real money.</div></div></details></div>
+</div>
+
+<div id="cases" class="section"><p style="font-size:14px;color:#666;margin-bottom:16px">Tap any case or doctrine to expand the holding, significance, or exam takeaway.</p><div class="card"><span class="badge b-blue">Week 10</span><div class="card-title">Aronson / Business Judgment Rule</div><details><summary>Core significance</summary><div class="detail-body">This is where the classic BJR presumption language comes from. It frames the idea that courts assume directors acted properly unless the challenger pleads enough to rebut that assumption.<div class="rule">Presumption first. Attack second.</div></div></details></div><div class="card"><span class="badge b-blue">Week 10</span><div class="card-title">Malpiede v. Townson</div><details><summary>Exam use</summary><div class="detail-body">Malpiede matters because if a corporation has a 102(b)(7) provision and the plaintiff pleads only a duty of care claim seeking only money damages, the case can be dismissed because there may be no remedy left.<div class="rule amber">No remedy, no party.</div></div></details></div><div class="card"><span class="badge b-amber">Week 11</span><div class="card-title">Smith v. Van Gorkom</div><details><summary>Full case analysis</summary><div class="detail-body"><strong>Issue:</strong> Did the directors breach their duty of care by approving a merger without being adequately informed?<br><br><strong>Holding:</strong> Yes. The process was too thin for a decision of that magnitude.<br><br><div class="rule red">Van Gorkom is the case you cite when the board jumped before it looked.</div></div></details></div><div class="card"><span class="badge b-amber">Week 11</span><div class="card-title">Shlensky v. Wrigley</div><details><summary>Core rule</summary><div class="detail-body">Shlensky reminds you that courts are not supposed to run baseball teams, or corporations for that matter. If a non-conflicted board makes a business choice, the court usually backs off.<div class="rule">Judicial humility is part of corporate law too.</div></div></details></div><div class="card"><span class="badge b-red">Week 11</span><div class="card-title">Duty of Loyalty</div><details><summary>Doctrinal summary</summary><div class="detail-body">Loyalty cases focus on whether directors are serving the corporation or serving themselves, a favored insider, or some interest that cannot be squared with fiduciary obligation.<div class="rule red">If conflict shows up, your danger meter should spike.</div></div></details></div><div class="card"><span class="badge b-green">Week 12</span><div class="card-title">Caremark / Stone v. Ritter</div><details><summary>Oversight framework</summary><div class="detail-body">The two prongs are the backbone of oversight liability: no reporting system at all, or a conscious failure to monitor the system that exists. Stone later clarifies that this sits in the loyalty / good-faith world.<div class="rule">No system or no monitoring, those are the two doors in.</div></div></details></div><div class="card"><span class="badge b-green">Week 12</span><div class="card-title">In re Boeing</div><details><summary>Modern exam takeaway</summary><div class="detail-body">Boeing matters because it shows modern courts taking mission-critical oversight more seriously when the board appears to have ignored the company’s central operational risk.<div class="rule amber">If airplane safety is mission critical, the board should probably talk about airplane safety. Wild idea, I know.</div></div></details></div><div class="card"><span class="badge b-green">Week 12</span><div class="card-title">Statutory Merger Doctrine</div><details><summary>Why this matters</summary><div class="detail-body">This is the transaction setting where all the fiduciary concepts become practical. Board approval, shareholder approval, and filings are formal steps, but behind them sit care, disclosure, loyalty, and price questions.<div class="rule green">Procedure is not filler. It is the skeleton of the transaction.</div></div></details></div></div>
+
+<div id="flashcards" class="section"><div class="chip-row" id="fc-filters"><div class="chip active" onclick="filterFC('all',this)">All (24)</div><div class="chip" onclick="filterFC('week10',this)">Week 10</div><div class="chip" onclick="filterFC('week11',this)">Week 11</div><div class="chip" onclick="filterFC('week12',this)">Week 12</div></div><p style="font-size:12px;color:#aaa;margin-bottom:10px">Tap the card to reveal the answer</p><div class="fc-wrap" onclick="flipFC()"><div id="fc-inner"><div class="fc-label" id="fc-label">Question</div><div id="fc-content" class="fc-q">Loading...</div></div><span class="fc-hint" id="fc-hint">tap to flip</span></div><div class="fc-nav"><button onclick="fcNav(-1)">← Prev</button><span class="fc-counter" id="fc-counter">1 / 24</span><button onclick="fcNav(1)">Next →</button></div></div>
+
+<div id="quiz" class="section"><div id="quiz-active"><div class="progress-bar"><div class="progress-fill" id="q-progress" style="width:0%"></div></div><div style="font-size:12px;color:#666;margin-bottom:12px" id="q-counter">Question 1 of 12</div><div class="qz-q" id="q-text"></div><div id="q-opts"></div><div class="qz-fb" id="q-fb"></div><button class="qz-next" id="q-next" onclick="nextQ()">Next question →</button></div><div id="quiz-done" style="display:none"><div class="score-box"><div class="score-big" id="q-score">0/12</div><div class="score-sub">questions correct</div><div class="score-grade" id="q-grade"></div><div style="margin-top:20px"><button class="restart primary" onclick="startQuiz()">Try again</button><button class="restart" onclick="showTab('flashcards',document.querySelectorAll('.nav-btn')[3])">Review flashcards</button></div></div></div></div>
+
+<script>
+function showTab(t,btn){document.querySelectorAll('.section').forEach(s=>s.classList.remove('show'));document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('active'));document.getElementById(t).classList.add('show');if(btn)btn.classList.add('active');}
+const allCards=[{q:"What is the Business Judgment Rule?",a:"A presumption that directors acted on an informed basis, in good faith, and in the honest belief that they acted in the best interests of the company.",tag:"week10"},{q:"What is the cleanest BJR burden point?",a:"The challenger bears the burden to rebut the presumption.",tag:"week10"},{q:"What usually rebuts BJR protection?",a:"Conflict of interest, illegality, fraud, bad faith, or gross negligence.",tag:"week10"},{q:"What is the practical effect of 102(b)(7)?",a:"It can eliminate personal liability for money damages for duty of care claims, but not for loyalty, bad faith, intentional misconduct, or knowing violations of law.",tag:"week10"},{q:"What does Malpiede teach?",a:"If only a duty of care claim for cash damages is pleaded and the corporation has a 102(b)(7) provision, dismissal may follow because there is no remedy.",tag:"week10"},{q:"What is the week 10 one-line takeaway?",a:"Directors are protected first, and plaintiffs have to break the shield.",tag:"week10"},{q:"Why is Smith v. Van Gorkom important?",a:"It is a rare case where directors were liable because they approved a major merger without being adequately informed.",tag:"week11"},{q:"What kind of problem did Van Gorkom primarily show?",a:"A process failure, often described as gross negligence or uninformed decision-making.",tag:"week11"},{q:"How does Shlensky differ from Van Gorkom?",a:"Shlensky shows judicial deference to an informed board choice, while Van Gorkom shows liability when process is too thin.",tag:"week11"},{q:"What does the duty of loyalty focus on?",a:"Whether directors are acting for the corporation rather than for themselves or some conflicting interest.",tag:"week11"},{q:"What is an exam-safe contrast between care and loyalty?",a:"Care is about process. Loyalty is about conflict, motive, and whose interests are being served.",tag:"week11"},{q:"What is the week 11 one-line takeaway?",a:"The shield from week 10 cracks when the board is uninformed or conflicted.",tag:"week11"},{q:"Is good faith usually a separate fiduciary duty?",a:"No. It is usually treated as part of the duty of loyalty framework.",tag:"week12"},{q:"What is a Caremark claim?",a:"An oversight claim based on failure to implement reporting systems or conscious failure to monitor the systems that exist.",tag:"week12"},{q:"What are the two main Caremark prongs?",a:"No reporting or information system at all, or a conscious failure to monitor the system that exists.",tag:"week12"},{q:"Why are Caremark claims so difficult?",a:"Because plaintiffs generally need to show something like a sustained or systematic oversight failure, not just a mistake.",tag:"week12"},{q:"What is the modern mission-critical idea?",a:"If the board ignores the company’s core risk area, plaintiffs may have a stronger oversight case.",tag:"week12"},{q:"What usually must happen for a statutory merger?",a:"Board approval, shareholder approval, and filing formalities.",tag:"week12"},{q:"Why are mergers highly testable?",a:"Because fiduciary duty, disclosure, process, and approval mechanics all collide in one transaction.",tag:"week12"},{q:"What is the week 12 one-line takeaway?",a:"Directors are exposed in oversight only when the failure is so extreme it looks like they stopped trying.",tag:"week12"},{q:"What phrase should you use for Caremark on an exam?",a:"One of the most difficult theories in corporation law for a plaintiff to win on.",tag:"week12"},{q:"What phrase should you use for Van Gorkom on an exam?",a:"The classic uninformed-board / gross-negligence merger case.",tag:"week11"},{q:"What phrase should you use for BJR on an exam?",a:"A presumption protecting informed, good-faith board decisions.",tag:"week10"},{q:"What phrase should you use for loyalty?",a:"If conflict shows up, the danger level rises fast.",tag:"week11"}];
+let fcFiltered=[...allCards]; let fcIdx=0; let fcShowing='q';
+function filterFC(tag,el){document.querySelectorAll('.chip').forEach(c=>c.classList.remove('active'));el.classList.add('active');fcFiltered=tag==='all'?[...allCards]:allCards.filter(c=>c.tag===tag);fcIdx=0;fcShowing='q';renderFC();}
+function renderFC(){const c=fcFiltered[fcIdx];const lbl=document.getElementById('fc-label');const cont=document.getElementById('fc-content');const hint=document.getElementById('fc-hint');const wrap=document.querySelector('.fc-wrap');if(fcShowing==='q'){lbl.textContent='Question';lbl.style.color='#6c5ce7';cont.className='fc-q';cont.textContent=c.q;wrap.style.background='#fff';hint.textContent='tap to see answer';}else{lbl.textContent='Answer';lbl.style.color='#059669';cont.className='fc-a';cont.style.whiteSpace='pre-line';cont.textContent=c.a;wrap.style.background='#f0fdf4';hint.textContent='tap to see question';}document.getElementById('fc-counter').textContent=(fcIdx+1)+' / '+fcFiltered.length;}
+function flipFC(){fcShowing=fcShowing==='q'?'a':'q';renderFC();}
+function fcNav(d){fcIdx=(fcIdx+d+fcFiltered.length)%fcFiltered.length;fcShowing='q';renderFC();}
+renderFC();
+const qs=[{q:"Which statement best describes the Business Judgment Rule?",opts:["A guarantee of good results","A presumption protecting informed, good-faith board decisions","A merger filing requirement","A damages formula"],ans:1,exp:"The BJR is a presumption that protects directors when they act on an informed basis, in good faith, and in the company’s best interests."},{q:"Which fact most strongly threatens BJR protection?",opts:["A bad result","A board disagreement","Gross negligence in the decision process","A risky industry"],ans:2,exp:"Bad results alone do not usually break the BJR shield, but grossly weak process can."},{q:"Smith v. Van Gorkom is most famous for what?",opts:["A board winning on deference","Director liability for uninformed decision-making","Creating Caremark","Defining merger filing fees"],ans:1,exp:"Van Gorkom is the classic process-failure / uninformed-board case."},{q:"How does Shlensky best function in this unit?",opts:["As a criminal law case","As a contrast showing judicial deference","As a merger statute case","As a Caremark prong"],ans:1,exp:"Shlensky is the contrast case showing courts deferring to a non-conflicted board judgment."},{q:"The duty of loyalty focuses most on:",opts:["Market timing","Conflict and self-interest","Accounting rules only","Weather risk"],ans:1,exp:"Loyalty asks whether directors are serving the corporation or themselves."},{q:"Good faith is generally treated as part of which duty?",opts:["Duty of care","Duty of loyalty","Duty to diversify","Duty of merger notice"],ans:1,exp:"Bad faith usually sits inside the duty of loyalty framework."},{q:"A Caremark claim usually requires what kind of failure?",opts:["A single ordinary mistake","A sustained or systematic oversight failure","A low stock price","A missed dividend"],ans:1,exp:"Caremark requires something much more serious than one bad moment."},{q:"Which is one Caremark prong?",opts:["Failure to maximize profits in every quarter","Utter failure to implement reporting or information systems","Failure to split a stock price","Failure to hold an annual party"],ans:1,exp:"One path is an utter failure to implement any reporting or information system or controls."},{q:"Why are Caremark claims famously hard?",opts:["Because courts hate plaintiffs personally","Because oversight liability requires a very demanding showing","Because mergers block them automatically","Because directors are immune"],ans:1,exp:"Oversight claims are hard because plaintiffs have to show a very serious monitoring failure, not mere sloppiness."},{q:"What does the mission-critical idea add to oversight doctrine?",opts:["It asks whether the ignored area was central to the company’s business","It eliminates shareholder approval","It replaces loyalty doctrine","It requires criminal conviction first"],ans:0,exp:"Modern oversight cases ask whether the board ignored the company’s core risk area."},{q:"A statutory merger usually requires:",opts:["Board approval only","Shareholder approval only","Board approval, shareholder approval, and filing steps","Only a CEO signature"],ans:2,exp:"Statutory mergers usually require board approval, shareholder approval, and formal filings."},{q:"What is the safest overall takeaway from these weeks?",opts:["Courts punish every bad result","Directors are safe no matter what","Corporate law focuses heavily on process, conflict, oversight, and approval structure","Only merger price matters"],ans:2,exp:"These weeks together are really about process, conflict, oversight, and transactional structure."}];
+let qIdx=0,qScore=0,qAnswered=false;
+function startQuiz(){qIdx=0;qScore=0;qAnswered=false;document.getElementById('quiz-done').style.display='none';document.getElementById('quiz-active').style.display='block';renderQ();}
+function renderQ(){const q=qs[qIdx];document.getElementById('q-progress').style.width=(qIdx/qs.length*100)+'%';document.getElementById('q-counter').textContent='Question '+(qIdx+1)+' of '+qs.length;document.getElementById('q-text').textContent=q.q;document.getElementById('q-fb').style.display='none';document.getElementById('q-next').style.display='none';qAnswered=false;const opts=document.getElementById('q-opts');opts.innerHTML='';q.opts.forEach((o,i)=>{const b=document.createElement('button');b.className='qz-opt';b.textContent=o;b.onclick=()=>answerQ(i,b);opts.appendChild(b);});}
+function answerQ(chosen,btn){if(qAnswered)return;qAnswered=true;const q=qs[qIdx];document.querySelectorAll('.qz-opt').forEach(o=>o.disabled=true);document.querySelectorAll('.qz-opt')[q.ans].classList.add('correct');if(chosen===q.ans){qScore++;btn.classList.add('correct');}else{btn.classList.add('wrong');}const fb=document.getElementById('q-fb');fb.textContent=(chosen===q.ans?'Correct! ':'Not quite. ')+q.exp;fb.style.borderLeftColor=chosen===q.ans?'#22c55e':'#ef4444';fb.style.display='block';document.getElementById('q-next').style.display='inline-block';}
+function nextQ(){qIdx++;if(qIdx>=qs.length){document.getElementById('q-progress').style.width='100%';document.getElementById('quiz-active').style.display='none';document.getElementById('quiz-done').style.display='block';document.getElementById('q-score').textContent=qScore+'/'+qs.length;const pct=Math.round(qScore/qs.length*100);let g='';if(pct>=90)g='Excellent work. You are seeing the structure behind the doctrine.';else if(pct>=75)g='Good job. Review Caremark and merger mechanics once more.';else if(pct>=60)g='You are getting there. Tighten up BJR, Van Gorkom, and oversight distinctions.';else g='Back through the flashcards. The doctrine is learnable, but it will not learn itself.';document.getElementById('q-grade').textContent=g;}else{renderQ();}}
+startQuiz();
+</script>
+</body>
+</html>

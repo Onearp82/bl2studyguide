@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Business Law II — Study Guide</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#f9f7f4;color:#1a1a1a;line-height:1.6}
+.header{background:#fff;border-bottom:1px solid #e5e5e5;padding:16px 24px;position:sticky;top:0;z-index:100}
+.header h1{font-size:20px;font-weight:600;color:#1a1a1a}
+.header p{font-size:13px;color:#666;margin-top:2px}
+.nav{display:flex;gap:6px;padding:16px 24px 0;flex-wrap:wrap}
+.nav-btn{padding:8px 16px;font-size:13px;font-weight:500;border:1px solid #ddd;border-radius:8px;background:#fff;color:#444;cursor:pointer;transition:all .15s}
+.nav-btn:hover{background:#f0eeff;border-color:#9b8ff0}
+.nav-btn.active{background:#6c5ce7;color:#fff;border-color:#6c5ce7}
+.section{display:none;padding:20px 24px}
+.section.show{display:block}
+.card{background:#fff;border:1px solid #e5e5e5;border-radius:12px;padding:20px;margin-bottom:14px}
+.card-title{font-size:16px;font-weight:600;color:#1a1a1a;margin-bottom:8px}
+.badge{display:inline-block;font-size:11px;font-weight:600;padding:3px 10px;border-radius:20px;margin-bottom:10px;text-transform:uppercase;letter-spacing:.04em}
+.b-blue{background:#dbeafe;color:#1e40af}
+.b-green{background:#d1fae5;color:#065f46}
+.b-amber{background:#fef3c7;color:#92400e}
+.b-red{background:#fee2e2;color:#991b1b}
+.b-purple{background:#ede9fe;color:#5b21b6}
+.b-teal{background:#ccfbf1;color:#134e4a}
+.rule{background:#f5f3ff;border-left:3px solid #6c5ce7;padding:10px 14px;border-radius:0 8px 8px 0;margin:10px 0;font-size:14px}
+.rule.green{background:#f0fdf4;border-left-color:#22c55e}
+.rule.amber{background:#fffbeb;border-left-color:#f59e0b}
+.rule.red{background:#fef2f2;border-left-color:#ef4444}
+.exam{font-size:12px;color:#92400e;background:#fef3c7;border-radius:8px;padding:8px 12px;margin-top:10px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px}
+.metric{background:#fff;border:1px solid #e5e5e5;border-radius:10px;padding:14px;text-align:center}
+.metric-n{font-size:32px;font-weight:700;color:#6c5ce7}
+.metric-l{font-size:12px;color:#666;margin-top:4px}
+details summary{cursor:pointer;font-weight:600;font-size:14px;padding:6px 0;list-style:none;display:flex;justify-content:space-between;align-items:center}
+details summary::-webkit-details-marker{display:none}
+details summary::after{content:"▸";color:#999;transition:transform .2s}
+details[open] summary::after{transform:rotate(90deg)}
+.detail-body{margin-top:10px;font-size:14px;line-height:1.75;color:#333}
+.divider{height:1px;background:#f0f0f0;margin:10px 0}
+.fc-wrap{background:#fff;border:1px solid #e5e5e5;border-radius:12px;min-height:220px;cursor:pointer;display:flex;align-items:center;justify-content:center;text-align:center;padding:24px;margin-bottom:12px;transition:box-shadow .2s;position:relative}
+.fc-wrap:hover{box-shadow:0 2px 12px rgba(0,0,0,.08)}
+.fc-label{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:#999;margin-bottom:12px}
+.fc-q{font-size:17px;font-weight:600;color:#1a1a1a;line-height:1.5}
+.fc-a{font-size:14px;color:#333;line-height:1.7}
+.fc-hint{font-size:12px;color:#aaa;position:absolute;bottom:12px;right:16px}
+.fc-nav{display:flex;align-items:center;justify-content:center;gap:16px;margin-bottom:20px}
+.fc-nav button{padding:8px 20px;border:1px solid #ddd;border-radius:8px;background:#fff;cursor:pointer;font-size:13px;font-weight:500}
+.fc-nav button:hover{background:#f5f5f5}
+.fc-counter{font-size:14px;color:#666;font-weight:500}
+.chip-row{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}
+.chip{font-size:12px;padding:5px 12px;border:1px solid #ddd;border-radius:20px;background:#fff;color:#555;cursor:pointer;font-weight:500}
+.chip:hover{border-color:#9b8ff0;color:#6c5ce7}
+.chip.active{background:#6c5ce7;color:#fff;border-color:#6c5ce7}
+.qz-q{font-size:16px;font-weight:600;color:#1a1a1a;margin-bottom:16px;line-height:1.5}
+.qz-opt{display:block;width:100%;text-align:left;padding:13px 16px;border:1px solid #e5e5e5;border-radius:8px;background:#fff;color:#1a1a1a;cursor:pointer;margin-bottom:8px;font-size:14px;transition:all .15s}
+.qz-opt:hover:not([disabled]){border-color:#9b8ff0;background:#f5f3ff}
+.qz-opt.correct{border-color:#22c55e;background:#f0fdf4;color:#065f46}
+.qz-opt.wrong{border-color:#ef4444;background:#fef2f2;color:#991b1b}
+.qz-fb{margin:12px 0;font-size:14px;color:#333;padding:14px;background:#f9f9f9;border-radius:8px;line-height:1.6;border-left:3px solid #6c5ce7;display:none}
+.qz-next{padding:10px 24px;border:1px solid #ddd;border-radius:8px;background:#fff;cursor:pointer;font-size:14px;font-weight:500;display:none;margin-top:4px}
+.qz-next:hover{background:#f5f5f5}
+.progress-bar{height:5px;background:#f0f0f0;border-radius:5px;margin-bottom:14px}
+.progress-fill{height:100%;background:#6c5ce7;border-radius:5px;transition:width .3s}
+.score-box{text-align:center;padding:40px 20px}
+.score-big{font-size:52px;font-weight:700;color:#6c5ce7}
+.score-sub{font-size:14px;color:#666;margin-top:6px}
+.score-grade{font-size:15px;color:#333;margin-top:16px;font-weight:500}
+.restart{padding:12px 28px;border:1px solid #ddd;border-radius:8px;background:#fff;cursor:pointer;font-size:14px;font-weight:500;margin-top:20px;margin-right:8px}
+.restart:hover{background:#f5f5f5}
+.restart.primary{background:#6c5ce7;color:#fff;border-color:#6c5ce7}
+.restart.primary:hover{background:#5a4fd4}
+@media(max-width:500px){.grid2{grid-template-columns:1fr}.nav-btn{font-size:12px;padding:7px 12px}}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>Business Law II — Study Guide</h1>
+  <p>Weeks 1–4 · Agency, Liability & Corporate Law · Chapters 38–39</p>
+</div>
+
+<div class="nav">
+  <button class="nav-btn active" onclick="showTab('overview',this)">Overview</button>
+  <button class="nav-btn" onclick="showTab('chapters',this)">Chapters</button>
+  <button class="nav-btn" onclick="showTab('cases',this)">Key Cases</button>
+  <button class="nav-btn" onclick="showTab('flashcards',this)">Flashcards</button>
+  <button class="nav-btn" onclick="showTab('quiz',this)">Quiz</button>
+</div>
+
+<!-- OVERVIEW -->
+<div id="overview" class="section show">
+  <div class="grid2">
+    <div class="metric"><div class="metric-n">4</div><div class="metric-l">chapters covered</div></div>
+    <div class="metric"><div class="metric-n">5</div><div class="metric-l">key cases</div></div>
+    <div class="metric"><div class="metric-n">4</div><div class="metric-l">authority types</div></div>
+    <div class="metric"><div class="metric-n">20</div><div class="metric-l">flashcards</div></div>
+  </div>
+
+  <div class="card">
+    <span class="badge b-purple">Big Picture</span>
+    <div class="card-title">What is agency law?</div>
+    <p style="font-size:14px;line-height:1.75">Agency is the cornerstone of all organized business activity. Because corporations can only act through people, nearly every commercial transaction involves an agent. Agency law determines when principals are bound by agents' contracts, when they bear liability for agents' torts, and what duties each side owes the other.</p>
+  </div>
+
+  <div class="card">
+    <span class="badge b-blue">The Agency Triangle</span>
+    <div class="card-title">Three relationships, one transaction</div>
+    <div style="display:flex;align-items:center;justify-content:center;gap:10px;padding:16px 0;flex-wrap:wrap">
+      <div style="text-align:center;padding:12px 20px;background:#ede9fe;border-radius:10px"><div style="font-weight:700;color:#5b21b6">Principal</div><div style="font-size:12px;color:#7c3aed;margin-top:2px">gives authority</div></div>
+      <div style="text-align:center">
+        <div style="font-size:11px;color:#999;margin-bottom:4px">Ch. 38</div>
+        <div style="height:2px;width:60px;background:#ddd;margin:0 auto"></div>
+      </div>
+      <div style="text-align:center;padding:12px 20px;background:#d1fae5;border-radius:10px"><div style="font-weight:700;color:#065f46">Agent</div><div style="font-size:12px;color:#059669;margin-top:2px">acts on behalf</div></div>
+      <div style="text-align:center">
+        <div style="font-size:11px;color:#999;margin-bottom:4px">Ch. 39</div>
+        <div style="height:2px;width:60px;background:#ddd;margin:0 auto"></div>
+      </div>
+      <div style="text-align:center;padding:12px 20px;background:#fef3c7;border-radius:10px"><div style="font-weight:700;color:#92400e">Third Party</div><div style="font-size:12px;color:#b45309;margin-top:2px">relies on agent</div></div>
+    </div>
+    <p style="font-size:13px;color:#666">Ch. 38 covers the Principal↔Agent relationship (duties, authority). Ch. 39 covers liability toward Third Parties.</p>
+  </div>
+
+  <div class="card">
+    <span class="badge b-amber">Exam Priorities</span>
+    <div class="card-title">What professors love to test</div>
+    <div style="font-size:14px;line-height:1.9">
+      <div style="padding:6px 0;border-bottom:1px solid #f0f0f0">① Identify the <strong>type of authority</strong> — express, implied, apparent, or ratification</div>
+      <div style="padding:6px 0;border-bottom:1px solid #f0f0f0">② <strong>Employee vs. independent contractor</strong> — who controls HOW the work is done?</div>
+      <div style="padding:6px 0;border-bottom:1px solid #f0f0f0">③ <strong>Detour vs. frolic</strong> — does the employer's vicarious liability survive?</div>
+      <div style="padding:6px 0;border-bottom:1px solid #f0f0f0">④ Apparent authority requires actual <strong>reliance</strong> by the third party (O'Banner)</div>
+      <div style="padding:6px 0">⑤ Piercing the veil needs <strong>unity of interest + inequitable result</strong> — undercapitalization alone is not enough</div>
+    </div>
+  </div>
+</div>
+
+<!-- CHAPTERS -->
+<div id="chapters" class="section">
+
+  <div class="card">
+    <span class="badge b-blue">Chapter 38</span>
+    <div class="card-title">Agency Relationships — Formation & Duties</div>
+
+    <details>
+      <summary>Creating an agency relationship</summary>
+      <div class="detail-body">
+        An <strong>agent</strong> acts in the name of and on behalf of a <strong>principal</strong>, with authority to affect the principal's legal rights and obligations toward third parties.<br><br>
+        <strong>Three elements required:</strong><br>
+        1. <strong>Consent</strong> — both parties agree to the relationship<br>
+        2. <strong>Control</strong> — principal has the right to control the agent's conduct<br>
+        3. <strong>On behalf of</strong> — agent acts for the principal's benefit<br><br>
+        <div class="rule">No formal contract or payment is required. Agency can arise informally through conduct and behavior — the parties cannot privately label someone an "independent contractor" if the actual relationship is that of employment.</div>
+        <strong>Two ways to create an agency:</strong><br>
+        — By agreement (express, oral or written)<br>
+        — By operation of law (implied by conduct or emergency circumstances)
+      </div>
+    </details>
+    <div class="divider"></div>
+
+    <details>
+      <summary>Five types of agents</summary>
+      <div class="detail-body">
+        <strong>General Agent</strong> — broad, ongoing authority; can conduct a wide range of business on the principal's behalf. To restrict authority, the principal must spell out limitations explicitly. A general power of attorney is a common personal general agent relationship.<br><br>
+        <strong>Special Agent</strong> — authority limited to one specific task or transaction only. Example: a real estate broker hired only to find a buyer cannot also sign the purchase contract on behalf of the seller.<br><br>
+        <strong>Agency Coupled with an Interest</strong> — agent has a property interest in the subject matter (e.g., a literary agent who earns a % of all royalties). The principal cannot unilaterally terminate this agency to the agent's detriment.<br><br>
+        <strong>Subagent</strong> — appointed by the agent (not directly by the principal). If the general agent had authority to hire subagents, both the principal and the general agent may be liable for the subagent's conduct.<br><br>
+        <strong>Servant / Employee</strong> — principal controls not just the result but also the method and manner of work. Creates the greatest liability for the principal under respondeat superior.<br><br>
+        <strong>Independent Contractor</strong> — principal controls only the result, not how work is done. Principal generally NOT liable for IC's torts.<br><br>
+        <div class="rule green"><strong>Key distinction:</strong> If the principal controls HOW work is performed → employee. If the principal controls only the final result → independent contractor. Courts look at actual conduct, not labels in contracts.</div>
+        <div class="exam">Exam factors for IC vs. employee: Does the employer set hours? Reimburse expenses? Withhold taxes? Is pay salary or commission? Does the worker use their own tools? Was the worker hired for a specific project or ongoing work?</div>
+      </div>
+    </details>
+    <div class="divider"></div>
+
+    <details>
+      <summary>Agent's duties to the principal (fiduciary)</summary>
+      <div class="detail-body">
+        The agent owes a <strong>fiduciary duty</strong> — the highest standard of loyalty and care.<br><br>
+        <strong>Duty of Loyalty</strong> — must not act for personal gain at the expense of the principal. Self-dealing and secret profits are strictly prohibited. Example: John Alden wooing Priscilla for himself while serving as Captain Standish's agent.<br><br>
+        <strong>Duty of Care</strong> — must perform tasks competently and responsibly.<br><br>
+        <strong>Duty of Confidentiality</strong> — cannot disclose or use confidential information, even after the agency ends.<br><br>
+        <strong>Duty to Obey</strong> — must follow the principal's lawful instructions.<br><br>
+        <strong>Duty to Notify</strong> — must inform the principal of all material facts. Notice to the agent = notice to the principal.<br><br>
+        <div class="rule red">Breach of fiduciary duty → agent must surrender all profits and may be liable for damages to the principal.</div>
+      </div>
+    </details>
+    <div class="divider"></div>
+
+    <details>
+      <summary>Principal's duties to the agent</summary>
+      <div class="detail-body">
+        <strong>Duty to Compensate</strong> — pay the agreed fee or reasonable value if not specified.<br><br>
+        <strong>Duty to Reimburse</strong> — cover expenses and losses incurred while following principal's instructions.<br><br>
+        <strong>Duty to Indemnify</strong> — protect the agent from losses caused by the principal's own conduct.<br><br>
+        <strong>Duty to Cooperate</strong> — not interfere with the agent's ability to perform the assigned tasks.
+      </div>
+    </details>
+  </div>
+
+  <div class="card">
+    <span class="badge b-purple">Chapter 39 — Authority</span>
+    <div class="card-title">Four Types of Authority (Critical for Exams)</div>
+
+    <details>
+      <summary>A. Express authority</summary>
+      <div class="detail-body">
+        Directly granted by the principal, orally or in writing. The <strong>strongest form</strong> of authority. Third parties may fully rely on written authorizations (e.g., signature cards at a bank).<br><br>
+        The principal bears the risk if the agent misuses expressly granted authority. Example: Allen Funt gave his accountant express authority via signature cards; when the accountant embezzled, the bank was not liable — Funt bore the risk of the authority he granted.
+      </div>
+    </details>
+    <div class="divider"></div>
+
+    <details>
+      <summary>B. Implied authority</summary>
+      <div class="detail-body">
+        Authority to perform acts <strong>reasonably necessary</strong> to carry out express authority. Arises from the nature of the relationship, industry customs, and the agent's knowledge of the situation.<br><br>
+        A business manager has broad implied authority: hiring/firing employees, paying debts, selling inventory, taking in receipts.<br><br>
+        <div class="rule amber"><strong>Limitation:</strong> No implied authority for unusual or extraordinary actions — cannot sell part of the business, take on debt, start a new business, or move premises without explicit permission. Example: A hotel manager named Andy has implied authority to reorder stationery but NOT to rename the hotel.</div>
+        <div class="exam">Emergency exception: If unforeseen circumstances make it impossible to contact the principal and inaction would cause substantial loss, the agent may take necessary extraordinary actions. (G.H. Mumm Champagne case — importer filed suit when France was under German occupation.)</div>
+      </div>
+    </details>
+    <div class="divider"></div>
+
+    <details>
+      <summary>C. Apparent authority (highly tested)</summary>
+      <div class="detail-body">
+        Exists when a third party <strong>reasonably believes</strong> the agent has authority based on the <strong>principal's conduct or representations</strong> — not the agent's own claims.<br><br>
+        Flows from: <strong>principal → third party</strong> (not from principal to agent).<br><br>
+        Based on estoppel: the principal cannot deny authority when the third party detrimentally relied on the principal's representations.<br><br>
+        Can arise from prior dealings — if a supplier dealt with a business under one owner, and the business is sold, the old owner is still liable to the supplier until the supplier receives actual written notice.<br><br>
+        <div class="rule"><strong>O'Banner rule:</strong> Apparent authority requires actual, detrimental reliance by the third party — not just the appearance of authority. If no reliance is proven, the principal is not bound.</div>
+        <div class="exam">Exam checklist: (1) Did the PRINCIPAL create the appearance of authority? (2) Did the third party ACTUALLY and REASONABLY rely on it? (3) Was the reliance detrimental? All three must be true.</div>
+      </div>
+    </details>
+    <div class="divider"></div>
+
+    <details>
+      <summary>D. Ratification</summary>
+      <div class="detail-body">
+        When a principal <strong>approves an unauthorized act after the fact</strong>, retroactively making it binding as if it had been authorized from the start.<br><br>
+        <strong>Requirements:</strong><br>
+        1. Principal must have knowledge of all material facts<br>
+        2. Principal must accept or affirm the <em>entire</em> transaction (cannot pick and choose)<br>
+        3. The agent must have been purporting to act on the principal's behalf at the time of the act<br><br>
+        <div class="rule amber">Once ratified, the contract is treated as binding from the beginning. The principal cannot later deny it.</div>
+      </div>
+    </details>
+  </div>
+
+  <div class="card">
+    <span class="badge b-red">Chapter 39 — Tort Liability</span>
+    <div class="card-title">Respondeat Superior & Scope of Employment</div>
+
+    <details>
+      <summary>Direct vs. vicarious liability</summary>
+      <div class="detail-body">
+        <strong>Direct liability</strong> — principal is personally at fault: instructed the agent to commit the act, or was negligent in hiring/supervising an unfit agent.<br><br>
+        <strong>Vicarious liability (respondeat superior)</strong> — "let the master answer." The employer is liable for an employee's torts committed within the scope of employment, even without the employer's personal fault.
+      </div>
+    </details>
+    <div class="divider"></div>
+
+    <details>
+      <summary>Detour vs. frolic</summary>
+      <div class="detail-body">
+        <strong>Within scope</strong> → employer is liable.<br><br>
+        <strong>Detour</strong> — a minor, brief deviation from job duties. Employer is still liable. Example: delivery driver makes a quick stop for lunch during a route.<br><br>
+        <strong>Frolic</strong> — a major deviation entirely for the employee's personal purposes, unconnected to work. Employer is NOT liable. Example: employee leaves work entirely for hours to handle personal business and causes an accident.<br><br>
+        <div class="rule red">Courts weigh: time elapsed, distance traveled, nature of the deviation, and whether the employee had re-entered the scope of work before the tort occurred.</div>
+        <div class="exam">Exam tip: The line is fact-specific. A small personal stop during a work trip = detour (still liable). Going across town for personal hours = likely frolic (not liable). Re-entry into scope also matters — if the employee was heading back to work when the accident happened, some courts find the employer liable again.</div>
+      </div>
+    </details>
+    <div class="divider"></div>
+
+    <details>
+      <summary>Independent contractor rule and exceptions</summary>
+      <div class="detail-body">
+        General rule: a principal is <strong>not liable</strong> for the torts of an independent contractor.<br><br>
+        <strong>Exceptions (principal IS liable):</strong><br>
+        1. <strong>Non-delegable duties</strong> — duties the law requires the principal to personally ensure (e.g., safe premises for invitees)<br>
+        2. <strong>Inherently dangerous activities</strong> — blasting, demolition, handling hazardous materials<br>
+        3. <strong>Negligent selection</strong> — principal hired an incompetent IC while knowing of the risk
+      </div>
+    </details>
+  </div>
+
+  <div class="card">
+    <span class="badge b-teal">Corporate Law</span>
+    <div class="card-title">Corporate Powers, Purpose & Veil Piercing</div>
+
+    <details>
+      <summary>Corporate powers (DGCL §121–122)</summary>
+      <div class="detail-body">
+        Under the Delaware General Corporation Law — the most influential corporate statute in the U.S.:<br><br>
+        <strong>§121 — General Powers:</strong> Corporations have all powers necessary and convenient to conduct any lawful business.<br><br>
+        <strong>§122 — Specific Powers include:</strong> Make contracts, own and transfer property, sue and be sued, borrow money, issue stock, adopt and amend bylaws, make charitable contributions.<br><br>
+        Corporations derive powers from state statute, not inherent rights. Any act beyond the corporation's granted powers is called "ultra vires."
+      </div>
+    </details>
+    <div class="divider"></div>
+
+    <details>
+      <summary>Corporate purpose — shareholders vs. stakeholders</summary>
+      <div class="detail-body">
+        <strong>Shareholder Wealth Maximization</strong> — the traditional view: directors must maximize shareholder value as their primary obligation (Dodge v. Ford; eBay v. Newmark).<br><br>
+        <strong>Stakeholder Theory</strong> — a growing view: corporations should also consider employees, communities, customers, and the environment. Some states (benefit corporations) explicitly allow this.<br><br>
+        <div class="rule"><strong>eBay v. Newmark rule:</strong> Directors of a for-profit corporation must act in the best interests of shareholders. Explicitly subordinating shareholder value to social goals is a breach of fiduciary duty — even if the social goals are admirable.</div>
+      </div>
+    </details>
+    <div class="divider"></div>
+
+    <details>
+      <summary>Piercing the corporate veil</summary>
+      <div class="detail-body">
+        Normally, shareholders have <strong>limited liability</strong> — only their investment is at risk. The corporate veil shields them from personal liability for the company's debts.<br><br>
+        Courts will pierce the veil and hold owners personally liable when two elements are proven:<br><br>
+        1. <strong>Unity of interest</strong> — the owner and corporation are not truly separate (failure to observe formalities, commingling of funds, the owner treats the company as their personal piggy bank)<br><br>
+        2. <strong>Inequitable result</strong> — treating them as separate would sanction fraud or fundamental unfairness<br><br>
+        <div class="rule green"><strong>Walkovszky v. Carlton:</strong> Multiple taxi shell corporations, each minimally capitalized. Court REFUSED to pierce. Undercapitalization alone is not enough — must also show fraud or inequity.</div>
+        <div class="rule red"><strong>Kinney Shoe v. Polan:</strong> Corporation had no assets, no bank account, never held meetings. Court PIERCED. When the corporation is a pure facade — an alter ego — the veil will fall.</div>
+        <div class="exam">Exam checklist for piercing: (1) Failure to observe corporate formalities? (2) Commingling of personal and corporate funds? (3) Severe undercapitalization? (4) Use of the corporation to perpetrate fraud? More factors = more likely to pierce.</div>
+      </div>
+    </details>
+  </div>
+</div>
+
+<!-- KEY CASES -->
+<div id="cases" class="section">
+  <p style="font-size:14px;color:#666;margin-bottom:16px">Tap any case to expand the full holding, reasoning, and exam rule.</p>
+
+  <div class="card">
+    <span class="badge b-blue">Apparent Authority</span>
+    <div class="card-title">O'Banner v. McDonald's Corp.</div>
+    <details>
+      <summary>Full case analysis</summary>
+      <div class="detail-body">
+        <strong>Issue:</strong> Was McDonald's Corp. liable under apparent authority for the actions of a franchisee?<br><br>
+        <strong>Holding:</strong> No. McDonald's was not liable.<br><br>
+        <strong>Reasoning:</strong> Even if the plaintiff believed the franchisee was a McDonald's employee, apparent authority based on estoppel requires proof that the plaintiff actually and detrimentally relied on that belief. The plaintiff provided no such evidence — she would have entered the store regardless of who owned it.<br><br>
+        <strong>Rule:</strong> Apparent authority is based on estoppel. Estoppel requires detrimental reliance. Without proven reliance, there is no apparent authority and the franchisor is not bound.<br><br>
+        <div class="rule">The consumer's general impression that a franchise location = the parent company is NOT sufficient. The plaintiff must prove she specifically relied on the belief of agency in a way that harmed her.</div>
+      </div>
+    </details>
+  </div>
+
+  <div class="card">
+    <span class="badge b-green">Corporate Purpose</span>
+    <div class="card-title">eBay Domestic Holdings Inc. v. Newmark</div>
+    <details>
+      <summary>Full case analysis</summary>
+      <div class="detail-body">
+        <strong>Background:</strong> Craigslist's founders (the Newmarks) adopted a poison pill and other defensive measures against eBay, explicitly stating they wanted to run Craigslist as a public service rather than maximize profits for shareholders.<br><br>
+        <strong>Issue:</strong> Can directors of a for-profit corporation formally subordinate shareholder value to social mission goals?<br><br>
+        <strong>Holding:</strong> No. The directors breached their fiduciary duties to shareholders.<br><br>
+        <strong>Rule:</strong> Delaware law requires directors to act in the best interests of shareholders. While directors may make conservative business decisions and consider stakeholders incidentally, they cannot make avoiding profit a matter of explicit corporate policy.<br><br>
+        <div class="rule green">Key distinction: The business judgment rule protects conservative or cautious management decisions. But explicitly declaring the company won't be run for profit is a breach — not protected by the BJR.</div>
+      </div>
+    </details>
+  </div>
+
+  <div class="card">
+    <span class="badge b-amber">Veil Piercing — Refused</span>
+    <div class="card-title">Walkovszky v. Carlton</div>
+    <details>
+      <summary>Full case analysis</summary>
+      <div class="detail-body">
+        <strong>Facts:</strong> Carlton owned 10 taxi corporations, each owning 2 cabs and carrying only the minimum required insurance. A pedestrian was severely injured and sought to hold Carlton personally liable by aggregating all the corporations.<br><br>
+        <strong>Holding:</strong> Court refused to pierce the veil. Carlton was not personally liable.<br><br>
+        <strong>Reasoning:</strong> The corporations, while thinly capitalized, observed corporate formalities. No fraud was alleged. The structure, though minimally funded, was a recognized industry practice.<br><br>
+        <strong>Rule:</strong> Undercapitalization alone is not enough to pierce the corporate veil. The plaintiff must also show fraud, injustice, or that the corporation was operated as a personal alter ego.<br><br>
+        <div class="rule amber">However: The court left open enterprise liability — if plaintiff could show all the corporations were operated as a single enterprise (not separate entities), liability could potentially reach all of them.</div>
+      </div>
+    </details>
+  </div>
+
+  <div class="card">
+    <span class="badge b-red">Veil Piercing — Granted</span>
+    <div class="card-title">Kinney Shoe Corp. v. Polan</div>
+    <details>
+      <summary>Full case analysis</summary>
+      <div class="detail-body">
+        <strong>Facts:</strong> Polan formed Industrial Realty Co. to sublease from Kinney Shoe's subsidiary. Industrial had no assets, no bank account, never issued stock, and never held a corporate meeting. Polan contributed no capital to it.<br><br>
+        <strong>Holding:</strong> Court pierced the corporate veil. Polan was personally liable.<br><br>
+        <strong>Reasoning:</strong> Industrial was a complete alter ego — it had absolutely no independent corporate existence. It was purely a liability shield with no substance behind it.<br><br>
+        <strong>Rule:</strong> When the corporation is a mere instrumentality of the owner and treating them as separate would sanction fundamental injustice, courts will pierce.<br><br>
+        <div class="rule red">Contrast with Walkovszky: Carlton had real (if minimal) corporate operations. Polan's corporation had literally nothing. The degree of disregard for the corporate form is the key variable.</div>
+      </div>
+    </details>
+  </div>
+
+  <div class="card">
+    <span class="badge b-purple">Express Authority</span>
+    <div class="card-title">Allen A. Funt Productions v. Chemical Bank</div>
+    <details>
+      <summary>Full case analysis</summary>
+      <div class="detail-body">
+        <strong>Facts:</strong> Allen Funt gave his accountant express authority (via signature cards on file at the bank) to draw checks on the company account. The accountant used this authority to embezzle funds. Funt sued the bank for negligence in failing to catch the scheme.<br><br>
+        <strong>Holding:</strong> Bank was not liable. Suit dismissed.<br><br>
+        <strong>Rule:</strong> A third party (the bank) is fully entitled to rely on express authorization given by a principal to an agent. The principal bears the risk when the agent misuses expressly granted authority. The principal cannot shift that risk to a third party who reasonably relied on the authorization.<br><br>
+        <div class="rule">Takeaway: Express authority is a double-edged sword. You get the benefit of authorized agent acts — but you also bear the risk if the agent misuses that authority.</div>
+      </div>
+    </details>
+  </div>
+</div>
+
+<!-- FLASHCARDS -->
+<div id="flashcards" class="section">
+  <div class="chip-row" id="fc-filters">
+    <div class="chip active" onclick="filterFC('all',this)">All (20)</div>
+    <div class="chip" onclick="filterFC('authority',this)">Authority</div>
+    <div class="chip" onclick="filterFC('agents',this)">Agent types</div>
+    <div class="chip" onclick="filterFC('liability',this)">Liability</div>
+    <div class="chip" onclick="filterFC('corporate',this)">Corporate</div>
+  </div>
+  <p style="font-size:12px;color:#aaa;margin-bottom:10px">Tap the card to reveal the answer</p>
+  <div class="fc-wrap" onclick="flipFC()">
+    <div id="fc-inner">
+      <div class="fc-label" id="fc-label">Question</div>
+      <div id="fc-content" class="fc-q">Loading...</div>
+    </div>
+    <span class="fc-hint" id="fc-hint">tap to flip</span>
+  </div>
+  <div class="fc-nav">
+    <button onclick="fcNav(-1)">← Prev</button>
+    <span class="fc-counter" id="fc-counter">1 / 20</span>
+    <button onclick="fcNav(1)">Next →</button>
+  </div>
+</div>
+
+<!-- QUIZ -->
+<div id="quiz" class="section">
+  <div id="quiz-active">
+    <div class="progress-bar"><div class="progress-fill" id="q-progress" style="width:0%"></div></div>
+    <div style="font-size:12px;color:#666;margin-bottom:12px" id="q-counter">Question 1 of 12</div>
+    <div class="qz-q" id="q-text"></div>
+    <div id="q-opts"></div>
+    <div class="qz-fb" id="q-fb"></div>
+    <button class="qz-next" id="q-next" onclick="nextQ()">Next question →</button>
+  </div>
+  <div id="quiz-done" style="display:none">
+    <div class="score-box">
+      <div class="score-big" id="q-score">0/12</div>
+      <div class="score-sub">questions correct</div>
+      <div class="score-grade" id="q-grade"></div>
+      <div style="margin-top:20px">
+        <button class="restart primary" onclick="startQuiz()">Try again</button>
+        <button class="restart" onclick="showTab('flashcards',document.querySelectorAll('.nav-btn')[3])">Review flashcards</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+function showTab(t,btn){
+  document.querySelectorAll('.section').forEach(s=>s.classList.remove('show'));
+  document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById(t).classList.add('show');
+  if(btn)btn.classList.add('active');
+}
+
+const allCards=[
+  {q:"What three elements must exist for an agency relationship to form?",a:"(1) Consent — both parties agree to the relationship\n(2) Control — principal has right to control the agent\n(3) On behalf of — agent acts for principal's benefit\n\nNo formal contract or payment is required.",tag:"agents"},
+  {q:"What is the key distinction between an employee and an independent contractor?",a:"Employee: principal controls both the RESULT and the METHOD / MANNER of work.\n\nIndependent Contractor: principal controls only the RESULT.\n\nLabels in contracts don't control — courts look at actual conduct.",tag:"agents"},
+  {q:"What is express authority?",a:"Directly granted by the principal, orally or in writing. The strongest form of authority. Third parties may fully rely on written authorizations. The principal bears the risk if the agent misuses express authority.",tag:"authority"},
+  {q:"What is implied authority?",a:"Authority to perform acts reasonably necessary to carry out express authority. Arises from the relationship's nature and industry customs.\n\nA business manager has broad implied authority but CANNOT: sell part of the business, take on debt, start a new business, or move premises without express permission.",tag:"authority"},
+  {q:"What is apparent authority and what does it require?",a:"Exists when a third party reasonably believes the agent has authority based on the PRINCIPAL's conduct.\n\nFlows: Principal → Third Party (not to the agent)\n\nRequires: (1) Principal created the appearance, (2) Third party ACTUALLY relied on it, (3) Reliance was detrimental.",tag:"authority"},
+  {q:"What is ratification?",a:"When a principal approves an unauthorized act after the fact, retroactively making it binding from the start.\n\nRequires: (1) Principal knows all material facts, (2) Principal accepts the ENTIRE transaction — cannot cherry-pick, (3) Agent was acting on principal's behalf.",tag:"authority"},
+  {q:"Define respondeat superior.",a:"'Let the master answer.' The doctrine that an employer is vicariously liable for an employee's torts committed WITHIN THE SCOPE OF EMPLOYMENT — even without personal fault on the employer's part.",tag:"liability"},
+  {q:"What is the difference between a detour and a frolic?",a:"Detour: minor, brief deviation from job duties. Employer IS still liable.\n\nFrolic: major deviation for employee's purely personal purposes, unconnected to work. Employer is NOT liable.\n\nCourts weigh: time, distance, nature of deviation, re-entry into scope.",tag:"liability"},
+  {q:"When is a principal NOT liable for an independent contractor's torts?",a:"General rule: NOT liable for IC torts.\n\nExceptions where principal IS liable:\n1. Non-delegable duties (e.g., safe premises)\n2. Inherently dangerous activities (blasting, demolition)\n3. Negligent selection of incompetent IC",tag:"liability"},
+  {q:"What fiduciary duties does an agent owe the principal?",a:"1. Loyalty — no self-dealing or secret profits\n2. Care — competent performance\n3. Confidentiality — cannot use/disclose info even after agency ends\n4. Obedience — follow lawful instructions\n5. Notification — report material facts (notice to agent = notice to principal)",tag:"agents"},
+  {q:"What is an 'agency coupled with an interest'?",a:"An agency where the agent has a property interest in the subject matter (e.g., a literary agent who takes a % of all earnings). The principal CANNOT unilaterally terminate this agency because doing so would damage the agent's vested interest.",tag:"agents"},
+  {q:"What is a subagent?",a:"An agent appointed by another agent (not directly by the principal). If the general agent had authority to appoint subagents, the subagent is an agent of BOTH the principal and the general agent — and both can be liable for the subagent's conduct.",tag:"agents"},
+  {q:"What two elements must be shown to pierce the corporate veil?",a:"1. Unity of Interest — the owner and corporation are not truly separate (no formalities, commingling of funds)\n\n2. Inequitable Result — treating them as separate would sanction fraud or fundamental unfairness",tag:"corporate"},
+  {q:"What was the rule in Walkovszky v. Carlton?",a:"Undercapitalization alone is NOT enough to pierce the corporate veil.\n\nThe plaintiff must also show fraud, injustice, or that the corporation was a mere alter ego. Carlton's taxi companies, while minimal, maintained a real (if thin) separate corporate existence.",tag:"corporate"},
+  {q:"What was the rule in Kinney Shoe v. Polan?",a:"Courts will pierce the corporate veil when the corporation is a mere instrumentality (alter ego) of the owner.\n\nPolan's corporation: no assets, no bank account, no meetings, no stock issued, no capital — a complete facade. The veil was pierced.",tag:"corporate"},
+  {q:"What did eBay v. Newmark hold about corporate purpose?",a:"Directors of a for-profit corporation must act in the best interests of shareholders.\n\nCraigslist's directors breached fiduciary duties by explicitly making shareholder wealth subordinate to social mission goals as a matter of corporate policy.\n\nConservative management ≠ breach. Anti-profit policy = breach.",tag:"corporate"},
+  {q:"What was the holding in O'Banner v. McDonald's?",a:"A franchisor is not liable under apparent authority unless the plaintiff actually relied on the belief that the franchisee was the franchisor's agent.\n\nThe plaintiff failed — she had no evidence of reliance. She would have entered the store regardless of who owned it.",tag:"liability"},
+  {q:"Under DGCL §121 and §122, what powers do corporations have?",a:"§121: All powers necessary and convenient to conduct any lawful business.\n\n§122 (specific): Make contracts, own and transfer property, sue and be sued, borrow money, issue stock, adopt bylaws, make charitable contributions.\n\nAny act beyond granted powers = ultra vires.",tag:"corporate"},
+  {q:"When can an agent act beyond normal implied authority in an emergency?",a:"If unforeseen circumstances make it impractical to contact the principal AND inaction would cause substantial loss, the agent may take necessary extraordinary actions.\n\nExample: G.H. Mumm Champagne — importer filed suit against infringer when France was under German occupation.",tag:"authority"},
+  {q:"What is 'notice to the agent is notice to the principal'?",a:"Information that an agent acquires within the scope of their authority is legally imputed to the principal — the principal cannot claim ignorance of facts their agent knew while acting within the scope of the agency.",tag:"agents"}
+];
+
+let fcFiltered=[...allCards];
+let fcIdx=0;
+let fcShowing='q';
+
+function filterFC(tag,el){
+  document.querySelectorAll('.chip').forEach(c=>c.classList.remove('active'));
+  el.classList.add('active');
+  fcFiltered=tag==='all'?[...allCards]:allCards.filter(c=>c.tag===tag);
+  fcIdx=0;fcShowing='q';
+  renderFC();
+}
+
+function renderFC(){
+  const c=fcFiltered[fcIdx];
+  const lbl=document.getElementById('fc-label');
+  const cont=document.getElementById('fc-content');
+  const hint=document.getElementById('fc-hint');
+  const wrap=document.querySelector('.fc-wrap');
+  if(fcShowing==='q'){
+    lbl.textContent='Question';lbl.style.color='#6c5ce7';
+    cont.className='fc-q';cont.textContent=c.q;
+    wrap.style.background='#fff';
+    hint.textContent='tap to see answer';
+  }else{
+    lbl.textContent='Answer';lbl.style.color='#059669';
+    cont.className='fc-a';
+    cont.style.whiteSpace='pre-line';
+    cont.textContent=c.a;
+    wrap.style.background='#f0fdf4';
+    hint.textContent='tap to see question';
+  }
+  document.getElementById('fc-counter').textContent=(fcIdx+1)+' / '+fcFiltered.length;
+}
+
+function flipFC(){fcShowing=fcShowing==='q'?'a':'q';renderFC();}
+function fcNav(d){fcIdx=(fcIdx+d+fcFiltered.length)%fcFiltered.length;fcShowing='q';renderFC();}
+renderFC();
+
+const qs=[
+  {q:"Sarah manages a retail store. Without being told explicitly, she hires seasonal staff every December. What type of authority is this?",opts:["Express authority","Implied authority","Apparent authority","Ratification"],ans:1,exp:"Implied authority covers acts reasonably necessary to carry out express authority. Hiring seasonal staff is incidental to managing a store — it doesn't require explicit permission each year."},
+  {q:"A company fires its general manager but doesn't notify suppliers. The former manager keeps ordering supplies on the company's account. The suppliers' claim is based on:",opts:["Implied authority","Express authority","Apparent authority","Ratification"],ans:2,exp:"After a general manager is fired, apparent authority may persist until third parties receive actual notice of the termination. The principal created the original appearance of authority and must affirmatively end it."},
+  {q:"A delivery driver makes a 2-minute stop at a drive-through during his route, then causes an accident on the way back. The employer is:",opts:["Not liable — this was a frolic","Liable — this was within scope of employment","Liable only if the driver had express permission to stop","Not liable — independent contractors aren't covered"],ans:1,exp:"A minor, brief deviation (detour) does not remove an employee from the scope of employment. A 2-minute stop during a work route is a detour, not a frolic — the employer remains liable."},
+  {q:"Which statement about independent contractors is CORRECT?",opts:["A principal is never liable for an IC's torts","Labels in contracts determine IC status","A principal can be liable for an IC's torts if the activity is inherently dangerous","ICs cannot be agents in any sense"],ans:2,exp:"While the general rule protects principals, exceptions include inherently dangerous activities, non-delegable duties, and negligent selection. Courts look at actual conduct — not contract labels — to determine IC status."},
+  {q:"In O'Banner v. McDonald's, why did the apparent authority claim fail?",opts:["McDonald's was not technically a franchisor","The franchisee didn't look like McDonald's","The plaintiff could not prove actual reliance on the belief of agency","Apparent authority never applies to franchise relationships"],ans:2,exp:"Apparent authority is based on estoppel, which requires detrimental reliance. The plaintiff failed because there was no evidence she relied on a belief that the store was corporate-owned — she would have entered regardless."},
+  {q:"What is the primary test courts use when deciding to pierce the corporate veil?",opts:["Whether the corporation is profitable","Unity of interest + inequitable result","Undercapitalization alone","Whether the Certificate of Incorporation was properly filed"],ans:1,exp:"Two elements: (1) Unity of interest — the corporation and owner are not truly separate; and (2) Inequitable result — treating them as separate would sanction fraud or injustice. Undercapitalization alone (Walkovszky) is insufficient."},
+  {q:"Under eBay v. Newmark, which action by a board of directors would be PERMISSIBLE?",opts:["Explicitly stating the company will not prioritize profits","Declining to pursue an aggressive acquisition to preserve company culture","Adopting bylaws making community welfare the company's primary goal","Running the company as a public service trust"],ans:1,exp:"Directors are protected by the business judgment rule in making conservative decisions, as long as they don't explicitly make avoiding profit a matter of corporate policy. eBay prohibits anti-profit policies — not cautious management."},
+  {q:"An agent signs a contract with a third party without any authority. The principal later learns of the contract and decides to honor it. This is:",opts:["Express authority","Implied authority","Apparent authority","Ratification"],ans:3,exp:"Ratification is when a principal approves an unauthorized act after the fact. The principal must know all material facts and accept the entire transaction. Once ratified, the contract is treated as binding from the beginning."},
+  {q:"Which type of agent creates the GREATEST liability exposure for the principal?",opts:["Independent contractor","Special agent","Servant / employee","Subagent (when unauthorized)"],ans:2,exp:"Employees (servants) create the greatest liability because the principal controls both the result AND the method of work. The principal is vicariously liable under respondeat superior for torts within the scope of employment."},
+  {q:"A real estate broker is hired only to find a buyer. She finds one, then signs the purchase contract on behalf of the seller. Is the seller bound?",opts:["Yes — the broker had implied authority to sign","Yes — the buyer acted in good faith","No — a special agent only has authority for the specific task assigned","Yes — apparent authority applies"],ans:2,exp:"A special agent has authority limited strictly to the assigned task (finding a buyer), not to signing contracts on the seller's behalf. The broker exceeded her authority and the seller is not bound."},
+  {q:"The fiduciary duty of an agent MOST directly prohibits:",opts:["Performing work carelessly","Taking secret profits at the principal's expense","Refusing to disclose confidential information","Acting in emergencies without authorization"],ans:1,exp:"The duty of loyalty — core to the fiduciary relationship — prohibits self-dealing and secret profits. The agent must act in the principal's best interests, not their own. Breach requires surrendering all profits and may lead to damages."},
+  {q:"Polan creates a corporation with no assets, no bank account, and never holds corporate meetings, then defaults on a lease. The most likely outcome is:",opts:["Limited liability is upheld — corporations protect their owners","The corporate veil is pierced — the corporation was a mere alter ego","The court requires Polan to capitalize the corporation before liability attaches","Respondeat superior applies"],ans:1,exp:"This is Kinney Shoe v. Polan. When a corporation is a complete facade — no assets, no formalities, no real existence — courts will pierce the veil because failing to do so would be fundamentally unjust. Compare to Walkovszky, where real (if minimal) operations existed."}
+];
+
+let qIdx=0,qScore=0,qAnswered=false;
+
+function startQuiz(){
+  qIdx=0;qScore=0;qAnswered=false;
+  document.getElementById('quiz-done').style.display='none';
+  document.getElementById('quiz-active').style.display='block';
+  renderQ();
+}
+
+function renderQ(){
+  const q=qs[qIdx];
+  document.getElementById('q-progress').style.width=(qIdx/qs.length*100)+'%';
+  document.getElementById('q-counter').textContent='Question '+(qIdx+1)+' of '+qs.length;
+  document.getElementById('q-text').textContent=q.q;
+  document.getElementById('q-fb').style.display='none';
+  document.getElementById('q-next').style.display='none';
+  qAnswered=false;
+  const opts=document.getElementById('q-opts');
+  opts.innerHTML='';
+  q.opts.forEach((o,i)=>{
+    const b=document.createElement('button');
+    b.className='qz-opt';b.textContent=o;
+    b.onclick=()=>answerQ(i,b);
+    opts.appendChild(b);
+  });
+}
+
+function answerQ(chosen,btn){
+  if(qAnswered)return;
+  qAnswered=true;
+  const q=qs[qIdx];
+  document.querySelectorAll('.qz-opt').forEach(o=>o.disabled=true);
+  document.querySelectorAll('.qz-opt')[q.ans].classList.add('correct');
+  if(chosen===q.ans){qScore++;btn.classList.add('correct');}
+  else{btn.classList.add('wrong');}
+  const fb=document.getElementById('q-fb');
+  fb.textContent=(chosen===q.ans?'Correct! ':'Not quite. ')+q.exp;
+  fb.style.borderLeftColor=chosen===q.ans?'#22c55e':'#ef4444';
+  fb.style.display='block';
+  document.getElementById('q-next').style.display='inline-block';
+}
+
+function nextQ(){
+  qIdx++;
+  if(qIdx>=qs.length){
+    document.getElementById('q-progress').style.width='100%';
+    document.getElementById('quiz-active').style.display='none';
+    document.getElementById('quiz-done').style.display='block';
+    document.getElementById('q-score').textContent=qScore+'/'+qs.length;
+    const pct=Math.round(qScore/qs.length*100);
+    let g='';
+    if(pct>=90)g='Excellent work — you know this material well!';
+    else if(pct>=75)g='Good job — review the concepts you missed and try again.';
+    else if(pct>=60)g='Getting there — focus on authority types and liability doctrines.';
+    else g='Spend more time with the chapters and flashcards, then try again.';
+    document.getElementById('q-grade').textContent=g;
+  }else{renderQ();}
+}
+
+startQuiz();
+</script>
+</body>
+</html>
