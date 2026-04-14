@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Business Law II — Weeks 13-16 Final Study Guide</title>
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#f9f7f4;color:#1a1a1a;line-height:1.6}
+    .header{background:#fff;border-bottom:1px solid #e5e5e5;padding:16px 24px;position:sticky;top:0;z-index:100}
+    .header h1{font-size:20px;font-weight:700;color:#1a1a1a}
+    .header p{font-size:13px;color:#666;margin-top:4px}
+    .nav{display:flex;gap:6px;padding:16px 24px 0;flex-wrap:wrap}
+    .nav-btn{padding:8px 16px;font-size:13px;font-weight:600;border:1px solid #ddd;border-radius:8px;background:#fff;color:#444;cursor:pointer;transition:all .15s}
+    .nav-btn:hover{background:#f0eeff;border-color:#9b8ff0}
+    .nav-btn.active{background:#6c5ce7;color:#fff;border-color:#6c5ce7}
+    .section{display:none;padding:20px 24px}
+    .section.show{display:block}
+    .card{background:#fff;border:1px solid #e5e5e5;border-radius:12px;padding:20px;margin-bottom:14px}
+    .card-title{font-size:17px;font-weight:700;color:#1a1a1a;margin-bottom:8px}
+    .badge{display:inline-block;font-size:11px;font-weight:700;padding:3px 10px;border-radius:20px;margin-bottom:10px;text-transform:uppercase;letter-spacing:.04em}
+    .b-blue{background:#dbeafe;color:#1e40af}
+    .b-green{background:#d1fae5;color:#065f46}
+    .b-amber{background:#fef3c7;color:#92400e}
+    .b-red{background:#fee2e2;color:#991b1b}
+    .b-purple{background:#ede9fe;color:#5b21b6}
+    .b-slate{background:#e2e8f0;color:#334155}
+    .rule{background:#f5f3ff;border-left:3px solid #6c5ce7;padding:10px 14px;border-radius:0 8px 8px 0;margin:10px 0;font-size:14px}
+    .rule.green{background:#f0fdf4;border-left-color:#22c55e}
+    .rule.amber{background:#fffbeb;border-left-color:#f59e0b}
+    .rule.red{background:#fef2f2;border-left-color:#ef4444}
+    .rule.slate{background:#f8fafc;border-left-color:#64748b}
+    .exam{font-size:12px;color:#92400e;background:#fef3c7;border-radius:8px;padding:8px 12px;margin-top:10px}
+    .grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px}
+    .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:16px}
+    .metric{background:#fff;border:1px solid #e5e5e5;border-radius:10px;padding:14px;text-align:center}
+    .metric-n{font-size:32px;font-weight:800;color:#6c5ce7}
+    .metric-l{font-size:12px;color:#666;margin-top:4px}
+    details summary{cursor:pointer;font-weight:700;font-size:14px;padding:6px 0;list-style:none;display:flex;justify-content:space-between;align-items:center}
+    details summary::-webkit-details-marker{display:none}
+    details summary::after{content:"▸";color:#999;transition:transform .2s}
+    details[open] summary::after{transform:rotate(90deg)}
+    .detail-body{margin-top:10px;font-size:14px;line-height:1.8;color:#333}
+    .divider{height:1px;background:#f0f0f0;margin:10px 0}
+    .matrix{display:grid;grid-template-columns:1.1fr 1fr 1fr 1.2fr;gap:1px;background:#e5e5e5;border-radius:10px;overflow:hidden;margin-top:10px}
+    .mcell{background:#fff;padding:12px;font-size:13px;line-height:1.6}
+    .mhead{background:#f5f3ff;font-weight:800;color:#4c1d95}
+    .small{font-size:12px;color:#666}
+    .casebox{border:1px solid #ece8ff;background:#faf9ff;border-radius:12px;padding:16px;margin-top:12px}
+    .casebox h4{font-size:15px;margin-bottom:8px;color:#332266}
+    .pill{display:inline-block;padding:4px 10px;border-radius:999px;background:#f3f4f6;color:#374151;font-size:11px;font-weight:700;margin-right:6px;margin-bottom:8px;text-transform:uppercase;letter-spacing:.04em}
+    .chip-row{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}
+    .chip{font-size:12px;padding:5px 12px;border:1px solid #ddd;border-radius:20px;background:#fff;color:#555;cursor:pointer;font-weight:600}
+    .chip:hover{border-color:#9b8ff0;color:#6c5ce7}
+    .chip.active{background:#6c5ce7;color:#fff;border-color:#6c5ce7}
+    .fc-wrap{background:#fff;border:1px solid #e5e5e5;border-radius:12px;min-height:240px;cursor:pointer;display:flex;align-items:center;justify-content:center;text-align:center;padding:24px;margin-bottom:12px;transition:box-shadow .2s;position:relative}
+    .fc-wrap:hover{box-shadow:0 2px 12px rgba(0,0,0,.08)}
+    .fc-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:#999;margin-bottom:12px}
+    .fc-q{font-size:17px;font-weight:700;color:#1a1a1a;line-height:1.5}
+    .fc-a{font-size:14px;color:#333;line-height:1.7}
+    .fc-hint{font-size:12px;color:#aaa;position:absolute;bottom:12px;right:16px}
+    .fc-nav{display:flex;align-items:center;justify-content:center;gap:16px;margin-bottom:20px}
+    .fc-nav button{padding:8px 20px;border:1px solid #ddd;border-radius:8px;background:#fff;cursor:pointer;font-size:13px;font-weight:600}
+    .fc-nav button:hover{background:#f5f5f5}
+    .fc-counter{font-size:14px;color:#666;font-weight:600}
+    .qz-q{font-size:16px;font-weight:700;color:#1a1a1a;margin-bottom:16px;line-height:1.5}
+    .qz-opt{display:block;width:100%;text-align:left;padding:13px 16px;border:1px solid #e5e5e5;border-radius:8px;background:#fff;color:#1a1a1a;cursor:pointer;margin-bottom:8px;font-size:14px;transition:all .15s}
+    .qz-opt:hover:not([disabled]){border-color:#9b8ff0;background:#f5f3ff}
+    .qz-opt.correct{border-color:#22c55e;background:#f0fdf4;color:#065f46}
+    .qz-opt.wrong{border-color:#ef4444;background:#fef2f2;color:#991b1b}
+    .qz-fb{margin:12px 0;font-size:14px;color:#333;padding:14px;background:#f9f9f9;border-radius:8px;line-height:1.6;border-left:3px solid #6c5ce7;display:none}
+    .qz-next{padding:10px 24px;border:1px solid #ddd;border-radius:8px;background:#fff;cursor:pointer;font-size:14px;font-weight:600;display:none;margin-top:4px}
+    .qz-next:hover{background:#f5f5f5}
+    .progress-bar{height:5px;background:#f0f0f0;border-radius:5px;margin-bottom:14px}
+    .progress-fill{height:100%;background:#6c5ce7;border-radius:5px;transition:width .3s}
+    .score-box{text-align:center;padding:40px 20px}
+    .score-big{font-size:52px;font-weight:800;color:#6c5ce7}
+    .score-sub{font-size:14px;color:#666;margin-top:6px}
+    .score-grade{font-size:15px;color:#333;margin-top:16px;font-weight:600}
+    .restart{padding:12px 28px;border:1px solid #ddd;border-radius:8px;background:#fff;cursor:pointer;font-size:14px;font-weight:600;margin-top:20px;margin-right:8px}
+    .restart:hover{background:#f5f5f5}
+    .restart.primary{background:#6c5ce7;color:#fff;border-color:#6c5ce7}
+    .restart.primary:hover{background:#5a4fd4}
+    ul.tight{margin-left:18px;line-height:1.85;font-size:14px}
+    @media(max-width:900px){.grid3{grid-template-columns:1fr 1fr}}
+    @media(max-width:700px){.grid2,.grid3,.matrix{grid-template-columns:1fr}.nav-btn{font-size:12px;padding:7px 12px}}
+  </style>
+</head>
+<body>
+<div class="header">
+  <h1>Business Law II — Unified Final Study Guide</h1>
+  <p>Weeks 13-16 only, mergers, takeover duties, fiduciary duties tied to the presented cases, insider trading, whistleblowing, bankruptcy, UCC, and exam analysis</p>
+</div>
+<div class="nav">
+  <button class="nav-btn active" onclick="showTab('overview',this)">Overview</button>
+  <button class="nav-btn" onclick="showTab('weeks',this)">Weeks</button>
+  <button class="nav-btn" onclick="showTab('duties',this)">Duties & Cases</button>
+  <button class="nav-btn" onclick="showTab('casebook',this)">Case Tie-Ins</button>
+  <button class="nav-btn" onclick="showTab('attachments',this)">Embedded Materials</button>
+  <button class="nav-btn" onclick="showTab('flashcards',this)">Flashcards</button>
+  <button class="nav-btn" onclick="showTab('quiz',this)">Quiz</button>
+</div>
+
+<div id="overview" class="section show">
+  <div class="grid2">
+    <div class="metric"><div class="metric-n">4</div><div class="metric-l">weeks covered</div></div>
+    <div class="metric"><div class="metric-n">8</div><div class="metric-l">core cases/doctrines emphasized</div></div>
+    <div class="metric"><div class="metric-n">32</div><div class="metric-l">flashcards</div></div>
+    <div class="metric"><div class="metric-n">16</div><div class="metric-l">quiz questions</div></div>
+  </div>
+
+  <div class="card">
+    <span class="badge b-purple">Big Picture</span>
+    <div class="card-title">What your professor is really testing</div>
+    <p style="font-size:14px;line-height:1.9">Your professor does not just want a holding. He wants you to identify the duty involved, explain why the court stopped trusting the board at the ordinary Business Judgment Rule level, name the correct test, and then tie the result back to the facts of the case. That is the whole game. A student who can say, "this is a care case," or "this is a Revlon case," and explain why, is in much better shape than a student who only remembers a slogan.</p>
+    <div class="rule">Best final-exam formula: start with BJR, identify the trigger, name the duty, apply the test, then state the holding and why that holding matters.</div>
+  </div>
+
+  <div class="card">
+    <span class="badge b-blue">Court Logic</span>
+    <div class="card-title">How the cases fit together</div>
+    <ul class="tight">
+      <li><strong>Van Gorkom</strong> teaches duty of care and what happens when directors approve a major transaction without enough information or process.</li>
+      <li><strong>Unocal</strong> teaches enhanced scrutiny when the board defends against a threat and might be protecting itself.</li>
+      <li><strong>Revlon</strong> teaches that once the company is effectively for sale, maximizing value becomes central.</li>
+      <li><strong>Paramount v. Time</strong> teaches that not every premium offer triggers sale-mode duties.</li>
+      <li><strong>Paramount v. QVC</strong> teaches that change of control does trigger a stronger obligation to seek the best value reasonably available.</li>
+      <li><strong>Caremark</strong> teaches oversight, bad faith, and how hard it is to win when challenging board monitoring failures.</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <span class="badge b-red">Exam Priority Stack</span>
+    <div class="card-title">What to know cold</div>
+    <div style="font-size:14px;line-height:1.9">
+      <div style="padding:6px 0;border-bottom:1px solid #f0f0f0">1. <strong>What duty is involved?</strong> Care, loyalty, good faith, oversight, or sale-duty.</div>
+      <div style="padding:6px 0;border-bottom:1px solid #f0f0f0">2. <strong>What triggered a change from BJR?</strong> Poor process, conflict, takeover defense, sale of control, or monitoring failure.</div>
+      <div style="padding:6px 0;border-bottom:1px solid #f0f0f0">3. <strong>What case controls?</strong> Van Gorkom, Unocal, Revlon, Time, QVC, or Caremark.</div>
+      <div style="padding:6px 0;border-bottom:1px solid #f0f0f0">4. <strong>What did the court hold?</strong> Was the board protected, or did it lose protection?</div>
+      <div style="padding:6px 0">5. <strong>Why does the holding matter?</strong> This is where your analysis earns points.</div>
+    </div>
+  </div>
+</div>
+
+<div id="weeks" class="section">
+  <div class="card">
+    <span class="badge b-blue">Week 13</span>
+    <div class="card-title">Statutory Mergers and Board Process</div>
+    <details open><summary>Core doctrine</summary><div class="detail-body">A statutory merger is not just filing paperwork. It is a board-level decision that can trigger fiduciary scrutiny. The board must approve the merger through a legally sound process, and if the process is weak, care-based problems can surface quickly.</div></details>
+    <div class="divider"></div>
+    <details><summary>Duty tie-in</summary><div class="detail-body">This week connects strongly to <strong>duty of care</strong>. If the board approves a merger without enough information, without adequate valuation work, or without real deliberation, that is where <strong>Van Gorkom</strong> matters. The idea is simple, bad results do not automatically equal liability, but bad process can.</div></details>
+    <div class="divider"></div>
+    <details><summary>What to say on an exam</summary><div class="detail-body">When you see a merger question, ask: Did the board inform itself? Did it deliberate? Did it understand value? Was anyone conflicted? If the board had a sloppy process, say <strong>duty of care</strong> and mention <strong>Van Gorkom</strong> as the warning case that directors cannot act like they are buying a used lawn mower off Facebook Marketplace.</div></details>
+  </div>
+
+  <div class="card">
+    <span class="badge b-amber">Week 14</span>
+    <div class="card-title">Takeover Defenses, Sale Duties, Paramount Cases, Insider Trading, Whistleblowing</div>
+    <details open><summary>Unocal</summary><div class="detail-body"><strong>Duty / concern:</strong> loyalty-infused defensive decision-making. <strong>Trigger:</strong> the board takes defensive action against a bidder. <strong>Rule:</strong> the board must show it reasonably perceived a threat to corporate policy and effectiveness, and its response must be reasonable in relation to the threat. <div class="rule amber">Translation: if the board is fighting off a bidder, the court worries the board may be protecting itself, not just the corporation.</div></div></details>
+    <div class="divider"></div>
+    <details><summary>Revlon</summary><div class="detail-body"><strong>Duty:</strong> sale-mode duty to maximize value. <strong>Trigger:</strong> the company is for sale, being broken up, or control is changing hands. <strong>Rule:</strong> the board's role shifts from preserving long-term corporate policy to seeking the best value reasonably available for stockholders. <div class="rule red">Translation: once sale mode begins, strategy takes a back seat and value moves to the front seat.</div></div></details>
+    <div class="divider"></div>
+    <details><summary>Paramount v. Time</summary><div class="detail-body"><strong>Duty question:</strong> had Revlon been triggered? <strong>Answer:</strong> no, not yet. The court allowed the board to continue pursuing a long-term strategic transaction because there was no true change of control. <div class="exam">Exam use: Time is your case for the idea that a board still has room to favor long-term strategy when control remains in a large public market.</div></div></details>
+    <div class="divider"></div>
+    <details><summary>Paramount v. QVC</summary><div class="detail-body"><strong>Duty question:</strong> had sale-of-control duties been triggered? <strong>Answer:</strong> yes. Because control was shifting to a more concentrated setting, the board had stronger obligations to pursue the best value reasonably available. <div class="exam">Exam use: QVC is your case for saying change of control matters, and it tightens judicial scrutiny.</div></div></details>
+    <div class="divider"></div>
+    <details><summary>Insider trading and whistleblowing</summary><div class="detail-body">These topics are less about merger duties and more about <strong>fairness, loyalty, disclosure, and enforcement</strong>. On insider trading, know the difference between the <strong>classical theory</strong> and the <strong>misappropriation theory</strong>. On whistleblowing, know that federal law can reward reporting and prohibit retaliation, especially in securities settings.</div></details>
+  </div>
+
+  <div class="card">
+    <span class="badge b-green">Week 15</span>
+    <div class="card-title">Bankruptcy</div>
+    <details open><summary>Core structure</summary><div class="detail-body"><strong>Chapter 7</strong> is liquidation. <strong>Chapter 11</strong> is reorganization. <strong>Chapter 13</strong> is an individual repayment plan. The first practical question is always what kind of bankruptcy this is.</div></details>
+    <div class="divider"></div>
+    <details><summary>Two key terms</summary><div class="detail-body"><strong>Automatic stay</strong> means most collection efforts stop at the beginning of the case. <strong>Discharge</strong> means the court determines what debts are wiped out and what debts survive. These are the two terms professors love because they separate someone who actually studied from someone who is just free-styling.</div></details>
+  </div>
+
+  <div class="card">
+    <span class="badge b-purple">Week 16</span>
+    <div class="card-title">UCC and Lawyer Soft Skills</div>
+    <details open><summary>UCC core</summary><div class="detail-body">UCC Article 2 governs the <strong>sale of goods</strong>. Goods are movable items. Land is not a good. Services by themselves are not goods. <div class="rule">Memory aid: if it moves, Article 2 probably wants a word.</div></div></details>
+    <div class="divider"></div>
+    <details><summary>Why the soft-skill material matters</summary><div class="detail-body">Your professor is making the point that legal analysis is done by people. Listening, judgment, civility, reading the room, and spotting what actually matters in the facts all affect whether a lawyer helps or hurts the client. That has exam value too, because strong exam answers are organized and practical, not robotic.</div></details>
+  </div>
+</div>
+
+<div id="duties" class="section">
+  <div class="card">
+    <span class="badge b-red">Master Duty Framework</span>
+    <div class="card-title">Start here when you see a case</div>
+    <div class="matrix">
+      <div class="mcell mhead">Case or situation</div>
+      <div class="mcell mhead">Main duty or concern</div>
+      <div class="mcell mhead">Trigger</div>
+      <div class="mcell mhead">What the court is asking</div>
+
+      <div class="mcell"><strong>Ordinary board decision</strong></div>
+      <div class="mcell">Business Judgment Rule</div>
+      <div class="mcell">No conflict, no sale, no defense issue</div>
+      <div class="mcell">Should the court defer to the board?</div>
+
+      <div class="mcell"><strong>Van Gorkom</strong></div>
+      <div class="mcell">Duty of care</div>
+      <div class="mcell">Uninformed approval of major transaction</div>
+      <div class="mcell">Did the directors act with a grossly negligent process?</div>
+
+      <div class="mcell"><strong>Unocal</strong></div>
+      <div class="mcell">Defensive action, loyalty concerns</div>
+      <div class="mcell">Board adopts takeover defense</div>
+      <div class="mcell">Was there a real threat, and was the response proportional?</div>
+
+      <div class="mcell"><strong>Revlon</strong></div>
+      <div class="mcell">Sale duty, value maximization</div>
+      <div class="mcell">Company is for sale or control is shifting</div>
+      <div class="mcell">Did the board seek the best value reasonably available?</div>
+
+      <div class="mcell"><strong>Paramount v. Time</strong></div>
+      <div class="mcell">BJR and long-term strategy</div>
+      <div class="mcell">Premium bid but no change of control</div>
+      <div class="mcell">Can the board still pursue strategic vision?</div>
+
+      <div class="mcell"><strong>Paramount v. QVC</strong></div>
+      <div class="mcell">Revlon-enhanced scrutiny</div>
+      <div class="mcell">Change of control</div>
+      <div class="mcell">Did the board act to maximize value under sale conditions?</div>
+
+      <div class="mcell"><strong>Caremark</strong></div>
+      <div class="mcell">Oversight, good faith, loyalty</div>
+      <div class="mcell">No reporting system or conscious failure to monitor</div>
+      <div class="mcell">Did the board basically ignore mission-critical monitoring?</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <span class="badge b-blue">Duty-to-Case Explanations</span>
+    <div class="card-title">What duty came out of each major case</div>
+
+    <div class="casebox">
+      <h4>Smith v. Van Gorkom</h4>
+      <div class="pill">Duty of Care</div><div class="pill">Process</div><div class="pill">Merger Approval</div>
+      <div class="detail-body">This is the classic case for <strong>duty of care</strong> in the merger setting. The lesson is not that directors can never approve a deal quickly. The lesson is that directors cannot approve a major sale without being adequately informed. The court focused on the board's weak process, limited information, and lack of careful deliberation. <strong>Holding significance:</strong> directors can lose BJR protection when the process is grossly negligent.</div>
+    </div>
+
+    <div class="casebox">
+      <h4>Unocal Corp. v. Mesa Petroleum</h4>
+      <div class="pill">Enhanced Scrutiny</div><div class="pill">Defensive Measures</div><div class="pill">Threat Analysis</div>
+      <div class="detail-body">Unocal is the takeover-defense case. The court understood that boards can face real threats from coercive or inadequate bids, but it also understood that directors may be tempted to defend themselves instead of the corporation. So the court created a middle-ground test. <strong>Duty significance:</strong> once the board uses defensive measures, the court stops giving automatic deference and requires proof of threat plus proportional response.</div>
+    </div>
+
+    <div class="casebox">
+      <h4>Revlon, Inc. v. MacAndrews &amp; Forbes</h4>
+      <div class="pill">Sale Mode</div><div class="pill">Value Maximization</div><div class="pill">Change in Board Role</div>
+      <div class="detail-body">Revlon teaches that there comes a point where the board is no longer acting as guardian of long-term corporate policy. Once the breakup or sale becomes inevitable, the board's job changes. It must focus on securing the best value reasonably available for stockholders. <strong>Duty significance:</strong> the duty shifts toward value maximization, and defensive favoritism becomes much harder to justify.</div>
+    </div>
+
+    <div class="casebox">
+      <h4>Paramount Communications v. Time</h4>
+      <div class="pill">Long-Term Strategy</div><div class="pill">No Change of Control</div><div class="pill">BJR Space</div>
+      <div class="detail-body">Time matters because it shows the board does <strong>not</strong> always enter Revlon mode simply because a higher offer appears. The court allowed the board to continue with its strategic transaction because there was no true change of control. <strong>Duty significance:</strong> directors still had room to pursue a long-term plan under the Business Judgment framework.</div>
+    </div>
+
+    <div class="casebox">
+      <h4>Paramount Communications v. QVC Network</h4>
+      <div class="pill">Change of Control</div><div class="pill">Revlon Trigger</div><div class="pill">Best Value</div>
+      <div class="detail-body">QVC is the companion case that shows when the board's flexibility tightens. Once control is being transferred to a more concentrated controller-type setting, stockholders are losing the future possibility of control premiums and market discipline. <strong>Duty significance:</strong> enhanced scrutiny applies, and the board must seek the best value reasonably available rather than simply prefer its favorite deal structure.</div>
+    </div>
+
+    <div class="casebox">
+      <h4>Caremark</h4>
+      <div class="pill">Oversight</div><div class="pill">Good Faith</div><div class="pill">Loyalty Framework</div>
+      <div class="detail-body">Caremark is the oversight case. It asks whether the board failed to implement any reasonable reporting system or consciously ignored warning signs. <strong>Duty significance:</strong> this sits in the good-faith / loyalty space and is very hard for plaintiffs, because ordinary sloppiness is not enough. The plaintiff needs facts showing something closer to sustained, knowing inattention.</div>
+    </div>
+  </div>
+</div>
+
+<div id="casebook" class="section">
+  <div class="card">
+    <span class="badge b-purple">Presentation Case Tie-Ins</span>
+    <div class="card-title">Use this wording when your professor asks, "What duty came out of that case?"</div>
+    <details open>
+      <summary>Van Gorkom, what duty and what ruling?</summary>
+      <div class="detail-body"><strong>Duty:</strong> duty of care. <strong>Ruling:</strong> the board could be liable because it approved the merger through a grossly negligent process. <strong>Why it matters:</strong> the case teaches that directors need enough information, enough time, and enough deliberation before approving a major transaction. The court was not punishing the board for a bad outcome. It was punishing an inadequately informed decision-making process.</div>
+    </details>
+    <div class="divider"></div>
+    <details>
+      <summary>Unocal, what duty and what ruling?</summary>
+      <div class="detail-body"><strong>Duty / concern:</strong> takeover-defense decisions with loyalty concerns built in. <strong>Ruling:</strong> the board may use defensive measures, but it must prove it reasonably perceived a threat and responded proportionally. <strong>Why it matters:</strong> the court does not blindly trust the board when it is fighting a bidder, because self-protection may be mixed in.</div>
+    </details>
+    <div class="divider"></div>
+    <details>
+      <summary>Revlon, what duty and what ruling?</summary>
+      <div class="detail-body"><strong>Duty:</strong> sale-of-control / value-maximization duty. <strong>Ruling:</strong> once the company is for sale, the board's role changes and it must focus on getting the best value reasonably available. <strong>Why it matters:</strong> this is the turning-point case that says long-term strategy no longer carries the same force once sale mode begins.</div>
+    </details>
+    <div class="divider"></div>
+    <details>
+      <summary>Paramount v. Time, what duty and what ruling?</summary>
+      <div class="detail-body"><strong>Duty question:</strong> did Revlon apply? <strong>Ruling:</strong> no, because there was no true change of control, so the board could still pursue long-term strategy. <strong>Why it matters:</strong> this case keeps students from making the lazy mistake of saying every premium bid triggers Revlon.</div>
+    </details>
+    <div class="divider"></div>
+    <details>
+      <summary>Paramount v. QVC, what duty and what ruling?</summary>
+      <div class="detail-body"><strong>Duty question:</strong> did change of control trigger stronger duties? <strong>Ruling:</strong> yes. The board had to pursue the best value reasonably available under enhanced scrutiny. <strong>Why it matters:</strong> this is the case you use when control is no longer staying in a broad public market and is instead shifting into a more concentrated form.</div>
+    </details>
+    <div class="divider"></div>
+    <details>
+      <summary>Caremark, what duty and what ruling?</summary>
+      <div class="detail-body"><strong>Duty:</strong> oversight / good faith within the loyalty framework. <strong>Ruling:</strong> liability can arise from an utter failure to implement reporting systems or a conscious failure to monitor them, but these claims are difficult. <strong>Why it matters:</strong> it tells you when board inattention becomes serious enough to move beyond ordinary carelessness.</div>
+    </details>
+  </div>
+
+  <div class="card">
+    <span class="badge b-amber">Short Oral Answers</span>
+    <div class="card-title">Quick, clean ways to sound like you understand the case</div>
+    <ul class="tight">
+      <li><strong>Van Gorkom:</strong> this is a duty-of-care case about an uninformed merger process.</li>
+      <li><strong>Unocal:</strong> this is an enhanced-scrutiny case for takeover defenses.</li>
+      <li><strong>Revlon:</strong> this is the sale-mode case, once the company is for sale the board must seek the best value reasonably available.</li>
+      <li><strong>Time:</strong> this case shows the board can still pursue long-term strategy when there is no true change of control.</li>
+      <li><strong>QVC:</strong> this case shows that a change of control triggers stronger value-maximization duties.</li>
+      <li><strong>Caremark:</strong> this is the oversight case, and it is hard for plaintiffs because they must show extreme monitoring failure or conscious disregard.</li>
+    </ul>
+  </div>
+</div>
+
+<div id="attachments" class="section">
+  <div class="card">
+    <span class="badge b-slate">Special Cases</span>
+    <div class="card-title">Core final-exam cases, duties, and what each case teaches</div>
+    <p style="font-size:14px;line-height:1.8">Use these case panels to connect the weeks together. The exam move is to identify the duty involved, explain what factual trigger caused the court to apply a tougher framework, state the holding, and then explain why that holding matters in later cases. These cases are huge because they show how directors move from ordinary Business Judgment Rule protection into enhanced scrutiny, sale-duty analysis, or oversight liability.</p>
+  </div>
+
+  <div class="card">
+    <span class="badge b-blue">Takeover and Sale Cases</span>
+    <div class="card-title">Embedded summaries for the core corporate-law materials</div>
+
+    <details open>
+      <summary>Unocal, embedded study panel</summary>
+      <div class="detail-body">
+        <strong>Core facts idea:</strong> the board faced a hostile takeover setting and responded with defensive measures. The court understood that directors may honestly believe they are protecting the company, but it also understood the obvious danger that directors may really be protecting their own jobs and control.<br><br>
+        <strong>Duty problem:</strong> this is mainly a <strong>duty of loyalty / good faith structural concern</strong> in the takeover setting. The court is not saying the board automatically acted disloyally. It is saying the conflict risk is serious enough that ordinary deference is no longer enough by itself.<br><br>
+        <strong>Test:</strong> first, the board must show it reasonably perceived a threat to corporate policy and effectiveness. Second, it must show the defensive response was reasonable in relation to the threat posed. In class language, that means the board has to prove both the danger and the fit between the danger and the defense.<br><br>
+        <strong>Holding significance:</strong> this case creates enhanced scrutiny for takeover defenses. It matters because it teaches that takeover law begins with distrust of easy board excuses. The board gets a chance to justify itself, but it must earn its protection back. That becomes the bridge between full BJR deference and the more demanding sale cases that follow.
+      </div>
+    </details>
+
+    <div class="divider"></div>
+
+    <details>
+      <summary>Revlon, embedded study panel</summary>
+      <div class="detail-body">
+        <strong>Core facts idea:</strong> the corporation moved into a sale or breakup posture, and once that happened the board's mission changed. The court treated the company as being in sale mode rather than ordinary strategy mode.<br><br>
+        <strong>Duty problem:</strong> this is where the board's ordinary freedom to choose among long-term visions narrows sharply. Once sale becomes inevitable, the board cannot hide behind broad strategic language if the real question is who is offering the best value to stockholders.<br><br>
+        <strong>Rule:</strong> the board must seek the best value reasonably available for stockholders. That does not always mean a perfect auction is mandatory, but it does mean the board's process and preferences must be tied to value rather than favoritism, entrenchment, or soft loyalty to one bidder.<br><br>
+        <strong>Holding significance:</strong> this case changes the board's role. It is the clearest statement that once sale mode starts, the directors become auctioneers charged with getting the best value reasonably available. On the final, this case matters because it shows the moment when preserving the corporation gives way to maximizing stockholder value.
+      </div>
+    </details>
+
+    <div class="divider"></div>
+
+    <details>
+      <summary>Paramount v. Time, embedded study panel</summary>
+      <div class="detail-body">
+        <strong>Core facts idea:</strong> the board wanted to continue with a strategic transaction rather than immediately pivot to another attractive offer. The pressure point was whether the mere existence of a richer deal forced the board into Revlon duties.<br><br>
+        <strong>Duty problem:</strong> did the board have to switch into sale-mode value maximization simply because stockholders could receive a better immediate price? That is the classic exam trap here.<br><br>
+        <strong>Answer:</strong> no. The court said there was no true change of control because control would remain fluid in a large, publicly traded ownership structure. Since control stayed dispersed, the board retained room to pursue long-term corporate strategy.<br><br>
+        <strong>Holding significance:</strong> this case protects room for long-term strategy where control stays dispersed in a public market. It matters because it teaches that <strong>Revlon is not triggered by every merger and not triggered by every higher bid</strong>. The right question is whether control is actually changing in a legally meaningful way.
+      </div>
+    </details>
+
+    <div class="divider"></div>
+
+    <details>
+      <summary>Paramount v. QVC, embedded study panel</summary>
+      <div class="detail-body">
+        <strong>Core facts idea:</strong> the deal structure would move the company from dispersed public ownership into a more concentrated control setting. That meant stockholders were not just getting cashed out of one deal. They were also losing the future opportunity to receive a control premium later.<br><br>
+        <strong>Duty problem:</strong> were stockholders losing the special protections and future options that exist when control remains dispersed in a public company? The court said yes, and that changed everything.<br><br>
+        <strong>Answer:</strong> yes, so enhanced scrutiny and Revlon-style value analysis applied. Once a real change of control is on the table, the board's duties tighten because stockholders only get one shot at that premium.<br><br>
+        <strong>Holding significance:</strong> this is the case that sharpens the difference between ordinary strategic mergers and control-shifting transactions. On the final, pair this case directly against <strong>Time</strong>. Time equals no true control shift, so more board flexibility. QVC equals real control shift, so stronger value-maximization duties and much less board freedom to play favorites.
+      </div>
+    </details>
+  </div>
+
+  <div class="card">
+    <span class="badge b-red">Duty Foundations</span>
+    <div class="card-title">Embedded review panels for the duty cases your professor expects you to connect</div>
+    <details open>
+      <summary>Van Gorkom, embedded study panel</summary>
+      <div class="detail-body"><strong>Use:</strong> use this case whenever a merger or major deal was approved too quickly, with too little information, or without enough deliberation.<br><br><strong>Duty involved:</strong> this is your flagship <strong>duty of care</strong> case. The core lesson is that directors must become adequately informed before approving a major transaction.<br><br><strong>What the court cared about:</strong> the court did not simply say the board picked the wrong number. It focused on the board's process, speed, and lack of reliable information. That is why this case is about gross negligence in decision-making, not hindsight regret alone.<br><br><strong>Why it matters:</strong> this case teaches that bad process can destroy BJR protection. For your final, tie Van Gorkom to Week 13 merger mechanics and explain that once a merger is on the table, the board cannot approve it casually. Major transaction plus thin process equals duty-of-care danger.</div>
+    </details>
+    <div class="divider"></div>
+    <details>
+      <summary>Caremark, embedded study panel</summary>
+      <div class="detail-body"><strong>Use:</strong> use this case whenever the facts involve red flags, compliance failures, reporting-system weakness, or board silence in the face of danger.<br><br><strong>Duty involved:</strong> it lives in the <strong>good faith / loyalty / oversight</strong> territory. Courts often describe it as one of the hardest theories for a plaintiff to win, because ordinary sloppiness is not enough.<br><br><strong>What the plaintiff must show:</strong> either an utter failure to implement any reporting or information system, or a conscious failure to monitor or respond to the system that existed. That is much worse than a board simply missing one problem.<br><br><strong>Why it matters:</strong> this case teaches that oversight is part of fiduciary duty. Connect it to your later weeks by remembering that directors are not only judged for deals they approve. They can also face exposure for mission-critical problems they basically stop watching.</div>
+    </details>
+  </div>
+  <div class="card">
+    <span class="badge b-purple">How These Cases Connect Across the Weeks</span>
+    <div class="card-title">The course map your professor is looking for</div>
+    <div class="detail-body">
+      <strong>Week 13, mergers:</strong> start with <strong>Van Gorkom</strong>. It teaches that merger approval is not just paperwork. The board must be informed, deliberate, and careful. That is your duty-of-care anchor in the merger setting.<br><br>
+      <strong>Week 14, takeover defenses:</strong> move to <strong>Unocal</strong>. Once the board starts defending against a threat, the court worries about self-protection. That is why the board has to justify both the threat and the proportionality of its response.<br><br>
+      <strong>Week 14, sale mode:</strong> then move to <strong>Revlon</strong>. Once the company is really for sale, the board's role changes from protecting the corporate enterprise to getting the best value reasonably available for stockholders.<br><br>
+      <strong>Week 14, the Paramount cases:</strong> <strong>Time</strong> tells you Revlon does not apply every time a higher offer appears. <strong>QVC</strong> tells you Revlon does apply when there is a real shift in control. That comparison is one of the most important final-exam connections in this part of the course.<br><br>
+      <strong>Oversight and good faith:</strong> <strong>Caremark</strong> reminds you that directors are not judged only for takeover and merger decisions. They also have monitoring obligations. When there is a severe failure to install or use reporting systems, the duty problem becomes one of oversight, good faith, and loyalty-based responsibility.<br><br>
+      <strong>Big takeaway:</strong> the weeks fit together as one progression. The board starts with BJR protection. <strong>Van Gorkom</strong> shows how weak process threatens duty-of-care protection. <strong>Unocal</strong> shows how defensive action triggers enhanced scrutiny. <strong>Revlon</strong>, <strong>Time</strong>, and <strong>QVC</strong> show how sale and control questions change the board's mission. <strong>Caremark</strong> shows that even outside a deal setting, directors can face fiduciary exposure when they stop monitoring serious risks.
+    </div>
+  </div>
+
+</div>
+
+<div id="flashcards" class="section">
+  <div class="chip-row" id="fc-filters">
+    <div class="chip active" onclick="filterFC('all',this)">All (32)</div>
+    <div class="chip" onclick="filterFC('ch13',this)">Week 13</div>
+    <div class="chip" onclick="filterFC('ch14',this)">Week 14</div>
+    <div class="chip" onclick="filterFC('duties',this)">Duties</div>
+    <div class="chip" onclick="filterFC('ch15',this)">Week 15</div>
+    <div class="chip" onclick="filterFC('ch16',this)">Week 16</div>
+    <div class="chip" onclick="filterFC('cases',this)">Cases</div>
+  </div>
+  <p style="font-size:12px;color:#aaa;margin-bottom:10px">Tap the card to reveal the answer</p>
+  <div class="fc-wrap" onclick="flipFC()"><div id="fc-inner"><div class="fc-label" id="fc-label">Question</div><div id="fc-content" class="fc-q">Loading...</div></div><span class="fc-hint" id="fc-hint">tap to flip</span></div>
+  <div class="fc-nav"><button onclick="fcNav(-1)">← Prev</button><span class="fc-counter" id="fc-counter">1 / 32</span><button onclick="fcNav(1)">Next →</button></div>
+</div>
+
+<div id="quiz" class="section">
+  <div id="quiz-active">
+    <div class="progress-bar"><div class="progress-fill" id="q-progress" style="width:0%"></div></div>
+    <div style="font-size:12px;color:#666;margin-bottom:12px" id="q-counter">Question 1 of 16</div>
+    <div class="qz-q" id="q-text"></div>
+    <div id="q-opts"></div>
+    <div class="qz-fb" id="q-fb"></div>
+    <button class="qz-next" id="q-next" onclick="nextQ()">Next question →</button>
+  </div>
+  <div id="quiz-done" style="display:none"><div class="score-box"><div class="score-big" id="q-score">0/16</div><div class="score-sub">questions correct</div><div class="score-grade" id="q-grade"></div><div style="margin-top:20px"><button class="restart primary" onclick="startQuiz()">Try again</button><button class="restart" onclick="showTab('flashcards',document.querySelectorAll('.nav-btn')[5])">Review flashcards</button></div></div></div>
+</div>
+
+<script>
+function showTab(t,btn){document.querySelectorAll('.section').forEach(s=>s.classList.remove('show'));document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('active'));document.getElementById(t).classList.add('show');if(btn)btn.classList.add('active');window.scrollTo({top:0,behavior:'smooth'});}
+
+const allCards=[
+{q:"What is the best first move on a BL2 final question?",a:"Start with the Business Judgment Rule, then identify what fact triggered a harder test.",tag:"duties"},
+{q:"What duty is highlighted by Van Gorkom?",a:"Duty of care, especially informed decision-making in approving a major transaction.",tag:"cases"},
+{q:"Why is Van Gorkom important?",a:"It shows directors can lose BJR protection when their merger-approval process is grossly negligent.",tag:"cases"},
+{q:"What is the merger exam shortcut for Week 13?",a:"Board approval, shareholder approval, filing mechanics, and fiduciary duty overlay.",tag:"ch13"},
+{q:"Why does merger process matter so much?",a:"Because care, loyalty, valuation, disclosure, and deliberation all collide in one transaction.",tag:"ch13"},
+{q:"When do you think Unocal?",a:"When the board uses defensive measures against a takeover threat.",tag:"ch14"},
+{q:"What are the two Unocal prongs?",a:"A threat to corporate policy and effectiveness, and a response reasonable in relation to the threat posed.",tag:"ch14"},
+{q:"Why is Unocal not pure BJR?",a:"Because the court worries directors may be protecting themselves while claiming to protect the company.",tag:"cases"},
+{q:"When do you think Revlon?",a:"When the company is for sale, being broken up, or control is changing hands.",tag:"ch14"},
+{q:"What is the cleanest one-line Revlon memory aid?",a:"Once sale mode starts, the board must seek the best value reasonably available.",tag:"ch14"},
+{q:"Why does Paramount v. Time matter?",a:"It shows that a higher offer does not automatically trigger Revlon when there is no true change of control.",tag:"cases"},
+{q:"Why does Paramount v. QVC matter?",a:"It shows that a change of control triggers enhanced scrutiny and stronger value-maximization duties.",tag:"cases"},
+{q:"What duty area does Caremark live in?",a:"Oversight, good faith, and loyalty-based monitoring duties.",tag:"duties"},
+{q:"Why are Caremark claims hard?",a:"Because the plaintiff must show an extreme monitoring failure, not ordinary sloppiness.",tag:"cases"},
+{q:"What is the classical theory of insider trading?",a:"An insider trades on material nonpublic information in breach of duties owed to shareholders or the corporation.",tag:"ch14"},
+{q:"What is the misappropriation theory?",a:"Someone trades on confidential information obtained through a breach of trust owed to the source of the information.",tag:"ch14"},
+{q:"What is the easiest whistleblower point to remember?",a:"Securities-law whistleblowers may receive anti-retaliation protection and sometimes financial rewards for qualifying reports.",tag:"ch14"},
+{q:"What are the three bankruptcy chapters you need most?",a:"Chapter 7 liquidation, Chapter 11 reorganization, and Chapter 13 individual repayment.",tag:"ch15"},
+{q:"What does the automatic stay do?",a:"It freezes most collection efforts at the start of the bankruptcy case.",tag:"ch15"},
+{q:"What is discharge?",a:"It is the determination of which debts are wiped out and which survive the bankruptcy case.",tag:"ch15"},
+{q:"What does UCC Article 2 govern?",a:"The sale of goods.",tag:"ch16"},
+{q:"What is the easiest UCC memory aid?",a:"If it moves, Article 2 probably wants a word.",tag:"ch16"},
+{q:"Why did the court allow the board room to pursue long-term strategy in Time?",a:"Because control remained dispersed and the deal did not force the company into Revlon sale mode.",tag:"cases"},
+{q:"What changed in QVC?",a:"Control was shifting into a more concentrated form, so value-maximization duties tightened.",tag:"cases"},
+{q:"What is the board really trying to prove under Unocal?",a:"That it saw a legitimate threat and did not overreact.",tag:"duties"},
+{q:"What is the board really trying to prove under Revlon?",a:"That once sale mode was triggered, it acted to secure the best value reasonably available.",tag:"duties"},
+{q:"What is the fastest way to describe Caremark in class?",a:"It is the oversight case about failing to implement or monitor reporting systems.",tag:"cases"},
+{q:"What soft-skill point matters on the exam?",a:"Reading the facts carefully and matching them to the correct doctrine instead of rambling.",tag:"ch16"},
+{q:"What should you say first when there is no bad fact yet?",a:"Start with the Business Judgment Rule.",tag:"duties"},
+{q:"What is the biggest final mistake students make with Time and QVC?",a:"They treat both as if Revlon always applies the same way, instead of asking whether control actually changed.",tag:"cases"},
+{q:"What is the main lesson of the presented corporate-control cases as a set?",a:"The board starts with deference, then specific facts trigger a tighter fiduciary framework.",tag:"duties"},
+{q:"What line sounds strongest in a short answer?",a:"Identify the duty, explain the trigger, state the rule, then give the holding and why it matters.",tag:"duties"}
+];
+
+let fcPool=[...allCards],fcIdx=0,fcFlipped=false;
+function renderFC(){const c=fcPool[fcIdx];document.getElementById('fc-counter').textContent=(fcIdx+1)+' / '+fcPool.length;document.getElementById('fc-label').textContent=fcFlipped?'Answer':'Question';document.getElementById('fc-content').className=fcFlipped?'fc-a':'fc-q';document.getElementById('fc-content').textContent=fcFlipped?c.a:c.q;}
+function flipFC(){fcFlipped=!fcFlipped;renderFC();}
+function fcNav(dir){fcIdx=(fcIdx+dir+fcPool.length)%fcPool.length;fcFlipped=false;renderFC();}
+function filterFC(tag,el){document.querySelectorAll('.chip').forEach(c=>c.classList.remove('active'));el.classList.add('active');fcPool=tag==='all'?[...allCards]:allCards.filter(c=>c.tag===tag);fcIdx=0;fcFlipped=false;renderFC();}
+renderFC();
+
+const qs=[
+{q:"A board approves a merger after a weak, rushed process with inadequate information. What duty should you think about first?",opts:["Duty of care","Bankruptcy law","Whistleblower law","UCC Article 2"],ans:0,exp:"That is Van Gorkom territory, a duty-of-care problem focused on process and information."},
+{q:"What is the main lesson of Van Gorkom?",opts:["Any bad merger price creates liability","Directors can face liability for a grossly negligent decision-making process","All mergers trigger Revlon","Courts never second-guess merger approval"],ans:1,exp:"Van Gorkom focuses on an uninformed and grossly negligent process, not just the price outcome."},
+{q:"A board adopts defensive measures against a hostile bidder. What test should you name first?",opts:["Caremark","Unocal","Revlon","Article 2"],ans:1,exp:"Defensive measures against a bidder point to Unocal enhanced scrutiny."},
+{q:"Under Unocal, what must the board show?",opts:["Only that it disliked the bidder","A real threat and a proportional response","Only that stockholders were divided","That the company was already bankrupt"],ans:1,exp:"Unocal requires threat plus a response reasonable in relation to that threat."},
+{q:"When does Revlon become important?",opts:["Whenever a company signs any contract","When the company is for sale or control is changing hands","Only after bankruptcy is filed","Whenever a board adopts a poison pill"],ans:1,exp:"Revlon applies when the company moves into sale mode or a change-of-control setting."},
+{q:"What is the board's core job once Revlon is triggered?",opts:["Preserve its own jobs","Maximize value for stockholders","Avoid all communication","Follow UCC default rules"],ans:1,exp:"The board must seek the best value reasonably available once sale mode is triggered."},
+{q:"Why did Paramount v. Time not automatically trigger Revlon?",opts:["Because no merger was involved","Because there was no true change of control","Because the board refused to meet","Because the bid was too small to count"],ans:1,exp:"Time is the case showing that no true change of control means the board may still pursue long-term strategy."},
+{q:"Why did Paramount v. QVC trigger stronger duties?",opts:["Because the board held no meetings","Because a change of control was occurring","Because the company filed Chapter 11","Because the market price dropped"],ans:1,exp:"QVC is about a shift into a more concentrated control setting, which tightens scrutiny."},
+{q:"A plaintiff says the board ignored major compliance red flags for years. What doctrine comes to mind?",opts:["Revlon","Caremark","Whistleblower immunity","Article 2 warranties"],ans:1,exp:"That is oversight territory, the space covered by Caremark."},
+{q:"Why are Caremark claims difficult for plaintiffs?",opts:["Because they require an extreme failure, not ordinary sloppiness","Because directors can never be sued","Because they only apply in criminal law","Because they are about goods sales"],ans:0,exp:"Caremark requires a very serious monitoring failure or conscious disregard."},
+{q:"Which theory says an insider violates duties by trading on material nonpublic corporate information?",opts:["Classical theory","Misappropriation theory","Automatic stay","Discharge"],ans:0,exp:"The classical theory focuses on insiders trading in breach of duties tied to the corporation or its shareholders."},
+{q:"Which theory says a person wrongfully trades on confidential information taken through a breach of trust owed to the source?",opts:["Classical theory","Misappropriation theory","Entire fairness","BJR"],ans:1,exp:"That is the misappropriation theory."},
+{q:"What does the automatic stay do in bankruptcy?",opts:["Maximizes merger value","Freezes most collection efforts","Transfers title to the trustee automatically","Creates a warranty of merchantability"],ans:1,exp:"The automatic stay pauses most collection activity at the start of the case."},
+{q:"Which chapter is most associated with liquidation?",opts:["Chapter 7","Chapter 11","Chapter 13","Article 2"],ans:0,exp:"Chapter 7 is the liquidation chapter."},
+{q:"What does UCC Article 2 govern?",opts:["Sales of goods","Real estate transfers","Corporate control disputes","Whistleblower rewards"],ans:0,exp:"Article 2 covers the sale of goods."},
+{q:"What is the cleanest overall BL2 final formula?",opts:["Memorize only case names","Start with BJR, identify the trigger, state the duty and test, then explain the holding","Discuss policy only","Jump to your conclusion immediately"],ans:1,exp:"That formula matches exactly how the professor is likely testing case understanding."}
+];
+let qIdx=0,qScore=0,qAnswered=false;
+function startQuiz(){qIdx=0;qScore=0;qAnswered=false;document.getElementById('quiz-done').style.display='none';document.getElementById('quiz-active').style.display='block';renderQ();}
+function renderQ(){const q=qs[qIdx];document.getElementById('q-progress').style.width=(qIdx/qs.length*100)+'%';document.getElementById('q-counter').textContent='Question '+(qIdx+1)+' of '+qs.length;document.getElementById('q-text').textContent=q.q;document.getElementById('q-fb').style.display='none';document.getElementById('q-next').style.display='none';qAnswered=false;const opts=document.getElementById('q-opts');opts.innerHTML='';q.opts.forEach((o,i)=>{const b=document.createElement('button');b.className='qz-opt';b.textContent=o;b.onclick=()=>answerQ(i,b);opts.appendChild(b);});}
+function answerQ(chosen,btn){if(qAnswered)return;qAnswered=true;const q=qs[qIdx];document.querySelectorAll('.qz-opt').forEach(o=>o.disabled=true);document.querySelectorAll('.qz-opt')[q.ans].classList.add('correct');if(chosen===q.ans){qScore++;btn.classList.add('correct');}else{btn.classList.add('wrong');}const fb=document.getElementById('q-fb');fb.textContent=(chosen===q.ans?'Correct! ':'Not quite. ')+q.exp;fb.style.borderLeftColor=chosen===q.ans?'#22c55e':'#ef4444';fb.style.display='block';document.getElementById('q-next').style.display='inline-block';}
+function nextQ(){qIdx++;if(qIdx>=qs.length){document.getElementById('q-progress').style.width='100%';document.getElementById('quiz-active').style.display='none';document.getElementById('quiz-done').style.display='block';document.getElementById('q-score').textContent=qScore+'/'+qs.length;const pct=Math.round(qScore/qs.length*100);let g='';if(pct>=90)g='Excellent. You are tying the duties to the cases the right way.';else if(pct>=75)g='Good work. Tighten up Time versus QVC and the exact Unocal/Revlon triggers.';else if(pct>=60)g='Solid start. Revisit the Duties & Cases and Case Tie-Ins tabs.';else g='Go back to the duty map first, then rebuild the case logic slowly.';document.getElementById('q-grade').textContent=g;}else{renderQ();}}
+startQuiz();
+</script>
+</body>
+</html>
